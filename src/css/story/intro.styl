@@ -1,27 +1,46 @@
 .intro
 	margin 0 auto
-	padding 6rem 1rem 3rem 1rem
+	padding 3rem 0
 
-	&__hed
-		max-width 60rem
-		margin 0 auto
-		text-align center
-		
-	&__dek
-		max-width $column-width
-		margin 0 auto
-		margin-top 1rem
-		text-align center
-	
-	&__byline
-		max-width $column-width
-		margin 0 auto
-		margin-top 1rem
-		text-align center
-	
-	&__time
-		display block
-		max-width $column-width
-		margin 0 auto
-		margin-top 1rem
-		text-align center
+	&__grid
+		width 100%
+		display flex
+		flex-direction row
+		flex-wrap wrap
+		align-content stretch
+		height auto
+
+		.logoDiv
+			width 20%
+			display flex
+			opacity 0
+
+	#scroll
+		position relative
+
+		.scroll__graphic
+			width 100%
+			position sticky
+			top 0
+			right 0
+			transform translate3d(0, 0, 0)
+
+		.scroll__text
+			position relative
+			top 0
+			max-width 30rem
+			width 100%
+			padding 0
+			margin 1rem auto
+
+			.step.is-active
+				opacity 1
+
+			.step
+				margin 2rem auto
+				opacity 0.5
+
+				p
+					background-color $white	
+					padding 1rem
+					box-shadow 0.5rem 0.5rem 1rem rgba($off-black, 0.5)				

@@ -8,8 +8,11 @@
     "node": "10.18.0"
   },
   "dependencies": {
+    "fs": "0.0.1-security",
+    "intersection-observer": "^0.10.0",
     "lodash.debounce": "4.0.8",
     "nouislider": "14.2.0",
+    "scrollama": "^2.2.1",
     "superagent": "5.2.2"
   },
   "devDependencies": {
