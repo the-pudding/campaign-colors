@@ -17,12 +17,11 @@ function setupColorChart() {
 function resize() {}
 
 function init() {
-  grid.init()
 
   loadData('colors.csv').then(result => {
     data = result;
     setupColorChart();
-    grid.init();
+    grid.init(data);
 	}).catch(console.error);
 }
 

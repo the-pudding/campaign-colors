@@ -42,7 +42,6 @@ d3.selection.prototype.puddingColorChart = function init(options) {
       const Chart = {
         // called once at start
         init() {
-          console.log(data)
 
           $colorChartContainer = $chart.append('div').attr('class', 'pudding-chart');
 

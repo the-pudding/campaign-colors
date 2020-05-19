@@ -1,3 +1,5 @@
 <section class='post-intro'>
-    <p class='prose'>{{{meta.lorem}}}</p>
+    {{#each copy.post-intro}}
+    <p class='prose'>{{{value}}}</p>
+    {{/each}}
 </section>

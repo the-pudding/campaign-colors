@@ -4,18 +4,11 @@
 			<div class='intro__grid' id=></div>
 		</div>
 		<div class='scroll__text'>
-			<div class='step' data-step='1'>
-				<p>Step 1</p>
-			</div>
-			<div class='step' data-step='2'>
-				<p>Step 2</p>
-			</div>
-			<div class='step' data-step='3'>
-				<p>Step 3</p>
-			</div>
-			<div class='step' data-step='4'>
-				<p>Step 4</p>
-			</div>
+			{{#each copy.introSteps}}
+				<div class='step' data-step='{{{step}}}' id='step-{{{step}}}'>
+					<p>{{{text}}}</p>
+				</div>
+			{{/each}}
 		</div>
 	</div>
 </section>

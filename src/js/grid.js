@@ -2,9 +2,7 @@
 const scrollama = require("scrollama");
 
 // candidate data
-const candidateIDs = ['bennet', 'biden', 'bloomberg', 'booker', 'buttigieg', 'castro', 'deblasio', 'delaney', 'gabbard', 'gillibrand',
-'harris', 'hickenlooper', 'inslee', 'klobuchar', 'messam', 'moulton', 'ojeda', 'orourke', 'patrick', 'ryan', 'sanders', 'sestak', 'steyer',
-'swalwell', 'trump', 'warren', 'weld', 'williamson', 'yang'];
+let data2020 = [];
 
 // DOM elements
 const scroller = scrollama();
@@ -13,6 +11,7 @@ const $graphic = $container.select('.scroll__graphic');
 const $gridDiv = $graphic.selectAll('.intro__grid')
 const $text = $container.select('.scroll__text');
 const $step = $text.selectAll('.step');
+const $introNameSpan = d3.selectAll('.intro-hover')
 
 // SCROLLAMA
 // setup
@@ -48,6 +47,74 @@ function handleResize() {
 // step enter
 function handleStepEnter(response) {
     $step.classed('is-active', (d, i) => i === response.index);
+
+    renderStep(response.index)
+}
+
+// render step
+function renderStep(index) {
+    const $campaignLogos = d3.selectAll('.logoDiv') 
+    const $RWB_N = d3.selectAll('.RWB-N')
+    const $RWB_Y = d3.selectAll('.RWB-Y')
+
+    if (index === 0) {
+        $campaignLogos.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)
+    }
+    if (index === 1) {
+        $RWB_N.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 0.2)
+
+        $RWB_Y.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)    
+    }
+    if (index === 2) {
+        $RWB_N.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 0.2)
+        
+        $RWB_Y.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)
+    }
+    if (index === 3) {
+        $RWB_N.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)
+        
+        $RWB_Y.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 0.2)
+    }
+    if (index === 4) {
+        $RWB_N.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)
+        
+        $RWB_Y.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 0.2)
+    }
+
+    if (index === 5) {
+        $campaignLogos.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)
+    }
+
 }
 
 // GRID
@@ -55,12 +122,12 @@ function handleStepEnter(response) {
 function loadGrid() {
    $gridDiv
         .selectAll('.logoDiv')
-        .data(candidateIDs)
+        .data(data2020)
         .enter()
         .append('div')
-        .attr('class', d => `logoDiv logoDiv-${d}`)
+        .attr('class', d => `logoDiv logoDiv-${d.nameID} RWB-${d.RWB}`)
         .append('img')
-        .attr('src', d => `assets/images/2020-${d}.jpg`)
+        .attr('src', d => `assets/images/2020-${d.nameID}.jpg`)
 }
 
 // fade in grid
@@ -74,7 +141,53 @@ function fadeInGrid() {
         .style('opacity', 1)
 }
 
-function init() {
+// INTERACTIONS
+function highlightName() {
+   const $name = d3.select(this).attr('id').split('-')[0]
+   
+   const $logo = d3.select(`.logoDiv-${$name}`)
+   const $logoDivs = d3.selectAll('.logoDiv')
+   $logoDivs.transition()
+        .duration(200)
+        .ease(d3.easeLinear)
+        .style('opacity', 0.2)
+   $logo.transition()
+        .duration(500)
+        .ease(d3.easeLinear)
+        .style('opacity', 1)
+}
+
+function dehighlightName() {
+    const $logoDivs = d3.selectAll('.logoDiv')
+    $logoDivs.transition()
+         .duration(200)
+         .ease(d3.easeLinear)
+         .style('opacity', 1)
+}
+
+// DATA
+function filterData(data) {
+    data2020 = data.filter(d => d.year === "2020")
+    data2020 = data2020.map(d => ({
+        ...d,
+        nameID: getLastName(d.name)
+    }))
+    data2020 = data2020.sort((a,b) => d3.ascending(a.nameID, b.nameID))
+}
+
+function getLastName(name) {
+    let lastName = null;
+    if (name === 'Bill de Blasio') {
+        lastName = 'deblasio'
+    }
+    else {
+        lastName = name.split(' ')[1].toLowerCase().replace("'","")
+    }
+    return lastName
+}
+
+function init(data) {
+    filterData(data);
     handleResize();
     scrollSetup();
 
@@ -82,6 +195,10 @@ function init() {
     fadeInGrid();
 
     window.addEventListener('resize', handleResize);
+
+    // INTERACTIONS
+    $introNameSpan.on('mouseenter', highlightName)
+    $introNameSpan.on('mouseleave', dehighlightName)
   }
   
   export default { init };
