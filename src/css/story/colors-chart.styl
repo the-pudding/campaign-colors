@@ -1,17 +1,87 @@
 .colors-chart
     width 100%
     padding 0 1rem
-    margin-top 3rem
+    margin 3rem auto
+    max-width 70rem
+
+    #scroll-chart
+        position relative
+        display flex
+        flex-direction row
+
+        .scroll-chart__graphic
+            width 66%
+            position sticky
+            top 3rem
+            right 0
+            transform translate3d(0, 0, 0)
+
+        .scroll-chart__overlay 
+            position absolute
+            top 0
+            right 0
+            height 100%
+            max-width 30rem
+            width calc(33% + 2rem)
+            padding 0
+            background-color $white  
+            opacity 0
+            z-index set-index('overlay')
+            padding 1.25rem
+
+            &.is-visible
+                opacity 0.95 
+
+            .overlay-inset
+
+                h5
+                    set-type-size('xx-large', true)
+                    font-family $tiempos-hed   
+                    margin 0 
+
+                p
+                    font-family $national
+                    color $gray-dark    
+                    margin 0
+
+                img
+                    width 100%
+                    margin 1rem 0
+
+                .notes
+                    font-family $tiempos
+                    color $off-black
+                    set-type-size('small', true)      
+
+        .scroll-chart__text
+            position relative
+            top 0
+            max-width 30rem
+            width 33%
+            padding 0
+
+            .step-chart.is-active
+                margin 2rem auto
+                opacity 1
+
+            .step-chart
+                opacity 1
+
+                p
+                    background-color $white 
+                    //padding 1rem   
+                    //box-shadow 0.5rem 0.5rem 1rem rgba($off-black, 0.5)	
+                    line-height 1.75
 
     #chart
         width 66%
 
         .pudding-chart
             width 100%
+            height 100vh
 
             .candidate
                 width 100%
-                height 2rem
                 display flex
                 flex-direction row
                 align-items center
@@ -23,7 +93,7 @@
                     box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
 
                 &.faded
-                    opacity 0.25    
+                    opacity 0.125    
 
                 &__name
                     font-family $national
@@ -40,8 +110,8 @@
 
                     .color-block
                         width 4rem
-                        height 1.5rem
-                        border 3px solid $off-black  
+                        //height 1.5rem
+                        border 1px solid $off-black  
                         margin 0 0.5rem 0 0
 
                         &.empty-block

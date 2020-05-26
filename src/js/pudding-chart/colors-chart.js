@@ -21,6 +21,7 @@ d3.selection.prototype.puddingColorChart = function init(options) {
       let $redBlock = null;
       let $whiteBlock = null;
       let $blueBlock = null;
+      const $overlay = d3.select('.scroll-chart__overlay')
   
       // data
       let data = $chart.datum();
@@ -55,21 +56,23 @@ d3.selection.prototype.puddingColorChart = function init(options) {
             .on('mouseenter', function(d) {
               $candidateRow.classed('faded', true)
               d3.select(this).classed('faded', false)
+              $overlay.classed('is-visible', true)
             })
             .on('mouseleave', function(d) {
               $candidateRow.classed('faded', false)
+              $overlay.classed('is-visible', false)
             })
           
-          $candidateName = $candidateRow
-            .append('p')
-            .text(function(d) {
-              if (d.party !== 'Reform') {
-                return `${d.name} (${(d.party).substring(0, 1)})`
-              }
-              else { return `${d.name} (Rf)`}
-            })
-            .text(d => `${d.name} (${(d.party).substring(0, 1)})`)
-            .attr('class', 'candidate__name')
+          // $candidateName = $candidateRow
+          //   .append('p')
+          //   .text(function(d) {
+          //     if (d.party !== 'Reform') {
+          //       return `${d.name} (${(d.party).substring(0, 1)})`
+          //     }
+          //     else { return `${d.name} (Rf)`}
+          //   })
+          //   .text(d => `${d.name} (${(d.party).substring(0, 1)})`)
+          //   .attr('class', 'candidate__name')
 
           $rwbGroup = $candidateRow
             .append('div')
@@ -127,16 +130,22 @@ d3.selection.prototype.puddingColorChart = function init(options) {
             })
             .style('background-color', function(d) { if (d.other3Hex) {return d.other3Hex} })  
             
-  
+          Chart.resize();
         },
         // on resize, update new dimensions
         resize() {
           // defaults to grabbing dimensions from container element
           width = $chart.node().offsetWidth - MARGIN_LEFT - MARGIN_RIGHT;
           height = $chart.node().offsetHeight - MARGIN_TOP - MARGIN_BOTTOM;
-          $svg
-            .attr('width', width + MARGIN_LEFT + MARGIN_RIGHT)
-            .attr('height', height + MARGIN_TOP + MARGIN_BOTTOM);
+
+          const totalCandidates = data.length
+          const barHeight = Math.floor((height)/totalCandidates)
+          console.log(height, height, barHeight)
+          const colorBlocks = d3.selectAll('.color-block')
+          
+          d3.selectAll('.color-block').style('height', `${barHeight}px`)
+          d3.selectAll('.candidate').style('height', `${barHeight}px`)
+
           return Chart;
         },
         // update scales and render chart

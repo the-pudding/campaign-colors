@@ -45,8 +45,6 @@ d3.selection.prototype.puddingColorMini = function init(options) {
         // called once at start
         init() {
 
-            console.log(data)
-
             $colorChartContainer = $chart.append('div').attr('class', 'pudding-chart');
 
             // append party divs
@@ -56,6 +54,8 @@ d3.selection.prototype.puddingColorMini = function init(options) {
                 .enter()
                 .append('div')
                 .attr('class', d => `demo demo-${d.key}`)
+            
+            $candidateRow = $partyContainer
 
 
         //   // append candidate rows

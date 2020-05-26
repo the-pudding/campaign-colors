@@ -1,5 +1,24 @@
 <section class='colors-chart'>
-    <div id='chart'>
-        
-    </div>
+	<div id='scroll-chart'>
+		<div class='scroll-chart__graphic sticky'>
+			<div id='chart'></div>
+		</div>
+        <div class='scroll-chart__overlay'>
+            <div class='overlay-inset'>
+                <h5>Candidate name</h5>
+                <p>Party, year</p>
+                <img src='assets/images/1968-cleaver.jpg'>
+                <p class='notes'>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat, nisl at bibendum tincidunt, metus ligula porttitor neque, quis fermentum neque arcu at diam. Phasellus luctus ac nisl eu ultricies. Aenean vitae ligula maximus, facilisis augue quis, dictum ligula. Maecenas dictum est justo, vel tincidunt libero porta ac. Integer magna sem, efficitur vel molestie non, scelerisque sit amet ligula.
+                </p>
+            </div>
+        </div>
+		<div class='scroll-chart__text'>
+			{{#each copy.introSteps}}
+				<div class='step-chart' data-step='{{{step}}}' id='step-{{{step}}}'>
+					<p>{{{text}}}</p>
+				</div>
+			{{/each}}
+		</div>
+	</div>
 </section>
