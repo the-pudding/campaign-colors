@@ -80,6 +80,20 @@
             width 100%
             height 100vh
 
+            .year
+                width 100%
+                border-top 1px solid rgba($gray-light, 0.5)
+                padding 0.25rem 0 1rem 2.5rem
+                position relative
+
+                .year-label
+                    position absolute
+                    margin -0.35rem 0 0 -2.5rem
+                    padding 0
+                    font-family $national
+                    color $gray-dark
+                    set-type-size('small', true)
+
             .candidate
                 width 100%
                 display flex
@@ -106,10 +120,10 @@
                 .rwb-group, .other-group
                     display flex
                     flex-direction row
-                    padding 0 1rem    
+                    padding 0 1rem 0 0.5rem    
 
                     .color-block
-                        width 4rem
+                        width 3.65rem
                         //height 1.5rem
                         border 1px solid $off-black  
                         margin 0 0.5rem 0 0

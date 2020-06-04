@@ -180,6 +180,9 @@ function getLastName(name) {
     if (name === 'Bill de Blasio') {
         lastName = 'deblasio'
     }
+    else if(name === 'Rocky De La Fuente') {
+        lastName = 'delafuente'
+    }
     else {
         lastName = name.split(' ')[1].toLowerCase().replace("'","")
     }

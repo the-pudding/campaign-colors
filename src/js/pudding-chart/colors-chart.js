@@ -14,6 +14,8 @@ d3.selection.prototype.puddingColorChart = function init(options) {
       // dom elements
       const $chart = d3.select(el);
       let $colorChartContainer = null;
+      let $yearDiv = null;
+      let $yearLabel = null;
       let $candidateRow = null;
       let $candidateName = null;
       let $rwbGroup = null;
@@ -22,9 +24,15 @@ d3.selection.prototype.puddingColorChart = function init(options) {
       let $whiteBlock = null;
       let $blueBlock = null;
       const $overlay = d3.select('.scroll-chart__overlay')
+      const $overlayInset = $overlay.select('.overlay-inset')
+      const $overlayName = $overlayInset.select('h5')
+      const $overlayParty = $overlayInset.select('.party')
+      const $overlayImg = $overlayInset.select('img')
+      const $overlayNotes = $overlayInset.select('.notes')
   
       // data
       let data = $chart.datum();
+      let yearNestData = [];
   
       // dimensions
       let width = 0;
@@ -39,40 +47,57 @@ d3.selection.prototype.puddingColorChart = function init(options) {
       // const scaleY = null;
   
       // helper functions
+      function chartMouseover(d, i) {
+        console.log(d)
+        $candidateRow.classed('faded', true)
+        d3.select(this).classed('faded', false)
+        $overlay.classed('is-visible', true)
+
+        $overlayName.text(`${d.name}`)
+        $overlayParty.text(`${d.party}, ${d.year}`)
+        $overlayImg.attr('src', `assets/images/${d.image}`)
+      }
+
+      function chartMouseout() {
+        $candidateRow.classed('faded', false)
+        $overlay.classed('is-visible', false)
+      }
   
       const Chart = {
         // called once at start
         init() {
 
+          yearNestData = d3.nest()
+            .key(d => d.year)
+            .entries(data)
+
           $colorChartContainer = $chart.append('div').attr('class', 'pudding-chart');
 
-          // append candidate rows
-          $candidateRow = $colorChartContainer
-            .selectAll('.candidate')
-            .data(data)
+          //append year divs
+          $yearDiv = $colorChartContainer
+            .selectAll('.year')
+            .data(yearNestData)
             .enter()
             .append('div')
-            .attr('class', d => `candidate candidate-${d.name}`)
-            .on('mouseenter', function(d) {
-              $candidateRow.classed('faded', true)
-              d3.select(this).classed('faded', false)
-              $overlay.classed('is-visible', true)
-            })
-            .on('mouseleave', function(d) {
-              $candidateRow.classed('faded', false)
-              $overlay.classed('is-visible', false)
-            })
+            .attr('class', d => `year year-${d.key}`)
           
-          // $candidateName = $candidateRow
-          //   .append('p')
-          //   .text(function(d) {
-          //     if (d.party !== 'Reform') {
-          //       return `${d.name} (${(d.party).substring(0, 1)})`
-          //     }
-          //     else { return `${d.name} (Rf)`}
-          //   })
-          //   .text(d => `${d.name} (${(d.party).substring(0, 1)})`)
-          //   .attr('class', 'candidate__name')
+          $yearLabel = $yearDiv
+            .append('p')
+            .attr('class', 'year-label')
+            .text(d => d.key)  
+
+          // append candidate rows
+          $candidateRow = $yearDiv
+            .selectAll('.candidate')
+            .data(d => d.values)
+            .enter()
+            .append('div')
+            .attr('class', function(d) {
+              const nameStripped = (d.name).replace(/\s+/g, '').replace('.', '').replace("'", '')
+              return `candidate candidate_${nameStripped} candidate_RWB-${d.RWB} candidate_white-${d.white} candidate_male-${d.male} candidate_whiteMale-${d.whiteMale}`
+            })
+            .on('mouseover', chartMouseover)
+            .on('mouseout', chartMouseout)
 
           $rwbGroup = $candidateRow
             .append('div')
@@ -84,51 +109,51 @@ d3.selection.prototype.puddingColorChart = function init(options) {
           
           $redBlock = $rwbGroup
             .append('div')
-            .attr('class', function(d) {
+            .attr('class', function(d, i) {
               if (d.redHex) { return 'color-block'}
               else { return 'color-block empty-block'}
             })
-            .style('background-color', function(d) { if (d.redHex) {return d.redHex} })  
+            .style('background-color', function(d, i) { if (d.redHex) {return d.redHex} })  
           
           $whiteBlock = $rwbGroup
             .append('div')
-            .attr('class', function(d) {
+            .attr('class', function(d, i) {
               if (d.whiteHex) { return 'color-block'}
               else { return 'color-block empty-block'}
             })
-            .style('background-color', function(d) { if (d.whiteHex) {return d.whiteHex} }) 
+            .style('background-color', function(d, i) { if (d.whiteHex) {return d.whiteHex} }) 
           
           $blueBlock = $rwbGroup
             .append('div')
-            .attr('class', function(d) {
+            .attr('class', function(d, i) {
               if (d.blueHex) { return 'color-block'}
               else { return 'color-block empty-block'}
             })
-            .style('background-color', function(d) { if (d.blueHex) {return d.blueHex} }) 
+            .style('background-color', function(d, i) { if (d.blueHex) {return d.blueHex} }) 
           
           $other1Block = $otherGroup
             .append('div')
-            .attr('class', function(d) {
+            .attr('class', function(d, i) {
               if (d.other1Hex) { return 'color-block'}
               else { return 'color-block empty-block'}
             })
-            .style('background-color', function(d) { if (d.other1Hex) {return d.other1Hex} })  
+            .style('background-color', function(d, i) { if (d.other1Hex) {return d.other1Hex} })  
           
           $other2Block = $otherGroup
             .append('div')
-            .attr('class', function(d) {
+            .attr('class', function(d, i) {
               if (d.other2Hex) { return 'color-block'}
               else { return 'color-block empty-block'}
             })
-            .style('background-color', function(d) { if (d.other2Hex) {return d.other2Hex} })  
+            .style('background-color', function(d, i) { if (d.other2Hex) {return d.other2Hex} })  
           
           $other3Block = $otherGroup
             .append('div')
-            .attr('class', function(d) {
+            .attr('class', function(d, i) {
               if (d.other3Hex) { return 'color-block'}
               else { return 'color-block empty-block'}
             })
-            .style('background-color', function(d) { if (d.other3Hex) {return d.other3Hex} })  
+            .style('background-color', function(d, i) { if (d.other3Hex) {return d.other3Hex} })  
             
           Chart.resize();
         },
@@ -140,7 +165,6 @@ d3.selection.prototype.puddingColorChart = function init(options) {
 
           const totalCandidates = data.length
           const barHeight = Math.floor((height)/totalCandidates)
-          console.log(height, height, barHeight)
           const colorBlocks = d3.selectAll('.color-block')
           
           d3.selectAll('.color-block').style('height', `${barHeight}px`)

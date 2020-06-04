@@ -66,6 +66,10 @@ function handleStepEnter(response) {
   renderStepChart(response.index)
 }
 
+function colorStep1() {
+  
+}
+
 // render step
 function renderStepChart(index) {
   if (index === 0) {
