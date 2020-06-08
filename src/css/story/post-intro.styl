@@ -1,0 +1,74 @@
+.year-chart-title
+    font-family $national
+    font-weight 700
+    margin 0 auto
+    padding 3rem 1rem 0rem 1rem
+    set-type-size('medium', true)
+
+.year-chart-labels
+    max-width $column-width
+    margin 0 auto
+    display flex
+    flex-direction row
+    justify-content space-between
+    padding 1rem 1rem 0 3.5rem
+
+    p
+        font-family $national
+        margin 0
+        padding 0
+        set-type-size('small', true)
+        color $gray-dark
+
+
+#year-chart
+    max-width $column-width
+    padding 0.25rem 1rem 1rem 1rem
+    height 28rem
+    margin 0 auto
+
+    .year-row
+        width 100%
+        display flex
+        flex-direction row
+        margin-bottom 0.25rem
+        align-items center
+
+        .year-label
+            font-family $national
+            margin 0
+            padding 0
+            set-type-size('small', true)
+            color $off-black
+            width 2.5rem
+
+        .bar-container
+            width calc(100% - 2.5rem)
+            height 1.5rem 
+            position relative
+            align-items center
+            display flex
+
+            .bar-rwb
+                height 1.5rem
+                position absolute
+                top 0
+                left 0
+                width 100%
+                //background-color $off-white
+                border 1px solid $off-black
+
+            .bar-rwbn
+                height 1.5rem
+                position absolute
+                top 0
+                left 0
+                background-color $off-black 
+
+                p
+                    font-family $national
+                    position absolute
+                    margin 0
+                    padding 0 0 0 0.25rem
+                    set-type-size('small', true)
+                    font-weight 700

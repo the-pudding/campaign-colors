@@ -2,4 +2,13 @@
     {{#each copy.post-intro}}
     <p class='prose'>{{{value}}}</p>
     {{/each}}
+    <h5 class='prose year-chart-title'>Percentage of candidates using color schemes</h5>
+    <div class='year-chart-labels'>
+        <p>Non-RWB colors</p>
+        <p>RWB colors</p>
+    </div>
+    <div id='year-chart'></div>
+    {{#each copy.post-intro2}}
+    <p class='prose'>{{{value}}}</p>
+    {{/each}}
 </section>

@@ -1,21 +1,21 @@
 /* global d3 */
 import grid from "./grid";
 import loadData from './load-data';
-import './pudding-chart/colors-chart'
-import './pudding-chart/colors-chart-mini'
+import './pudding-chart/colors-chart';
+import './pudding-chart/bar';
 
 // initialize scrollama
 const scrollama = require("scrollama");
 
 let data = null;
-let partyData = null;
-let thirdPartyData = null;
-let raceData = null;
-let genderData = null;
+let yearData = null;
 
 let colorChart = null;
-let colorMini = null;
 const $colorChartDiv = d3.select('#chart')
+
+let yearChart = null;
+const $yearChartDiv = d3.select('#year-chart')
+
 const scrollerChart = scrollama();
 const $container = d3.select('#scroll-chart');
 const $graphic = $container.select('.scroll-chart__graphic');
@@ -26,6 +26,12 @@ function setupColorChart() {
   colorChart = $colorChartDiv
     .datum(data)
     .puddingColorChart()
+}
+
+function setupYearChart() {
+  yearChart = $yearChartDiv
+    .datum(yearData)
+    .puddingBarChart()
 }
 
 // SCROLLAMA
@@ -66,23 +72,65 @@ function handleStepEnter(response) {
   renderStepChart(response.index)
 }
 
+function colorStep0() {
+  const $candidateRow = d3.selectAll('.candidate');
+
+  $candidateRow.classed('faded', false).style('pointer-events', 'none')
+}
+
 function colorStep1() {
+  const $candidateRow = d3.selectAll('.candidate');
+
+  $candidateRow.classed('faded', true)
+  d3.selectAll('.candidate_RWB-N').classed('faded', false).style('pointer-events', 'none')
+}
+
+function colorStep2() {
+  const $candidateRow = d3.selectAll('.candidate');
   
+  $candidateRow.classed('faded', true)
+  d3.selectAll('.candidate_RWB-N.candidate_whiteMale-FALSE').classed('faded', false).style('pointer-events', 'none')
+}
+
+function colorStep3() {
+  const $candidateRow = d3.selectAll('.candidate');
+  
+  $candidateRow.classed('faded', true)
+  d3.selectAll('.candidate_RWB-N.candidate_white-N').classed('faded', false).style('pointer-events', 'none')
+}
+
+function colorStep4() {
+  const $candidateRow = d3.selectAll('.candidate');
+  
+  $candidateRow.classed('faded', true)
+  d3.selectAll('.candidate_RWB-N.candidate_male-N').classed('faded', false).style('pointer-events', 'none')
+}
+
+function colorStep5() {
+  const $candidateRow = d3.selectAll('.candidate');
+  
+  $candidateRow.classed('faded', false).style('pointer-events', 'auto')
 }
 
 // render step
 function renderStepChart(index) {
   if (index === 0) {
+    colorStep0()
   }
   if (index === 1) {
+    colorStep1()
   }
   if (index === 2) {
+    colorStep2()
   }
   if (index === 3) {
+    colorStep3()
   }
   if (index === 4) {
+    colorStep4()
   }
   if (index === 5) {
+    colorStep5()
   }
 }
 
@@ -90,10 +138,12 @@ function resize() {}
 
 function init() {
 
-  loadData('colors.csv').then(result => {
-    data = result;
+  loadData(['colors.csv', 'years.csv']).then(result => {
+    data = result[0];
+    yearData = result[1];
 
     grid.init(data);
+    setupYearChart();
     setupColorChart();
     handleResize();
     scrollSetup();

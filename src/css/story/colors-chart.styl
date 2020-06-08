@@ -17,16 +17,16 @@
             transform translate3d(0, 0, 0)
 
         .scroll-chart__overlay 
-            position absolute
-            top 0
-            right 0
+            position fixed
+            top 3rem
+            right 6rem
             height 100%
             max-width 30rem
-            width calc(33% + 2rem)
+            width calc(33% - 2rem)
             padding 0
             background-color $white  
             opacity 0
-            z-index set-index('overlay')
+            z-index 999
             padding 1.25rem
 
             &.is-visible
@@ -83,7 +83,7 @@
             .year
                 width 100%
                 border-top 1px solid rgba($gray-light, 0.5)
-                padding 0.25rem 0 1rem 2.5rem
+                padding 0.25rem 0 0.75rem 2.5rem
                 position relative
 
                 .year-label
@@ -101,6 +101,7 @@
                 align-items center
                 border 1px solid transparent
                 border-radius 0.25rem
+                pointer-events none
 
                 &:hover
                     border 1px solid $gray

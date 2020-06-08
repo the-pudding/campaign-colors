@@ -48,7 +48,6 @@ d3.selection.prototype.puddingColorChart = function init(options) {
   
       // helper functions
       function chartMouseover(d, i) {
-        console.log(d)
         $candidateRow.classed('faded', true)
         d3.select(this).classed('faded', false)
         $overlay.classed('is-visible', true)
