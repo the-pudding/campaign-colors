@@ -28,6 +28,7 @@
             opacity 0
             z-index 999
             padding 1.25rem
+            pointer-events none
 
             &.is-visible
                 opacity 0.95 
@@ -73,6 +74,54 @@
                     //box-shadow 0.5rem 0.5rem 1rem rgba($off-black, 0.5)	
                     line-height 1.75
 
+                    .intro-hover
+                        border 1px solid $gray
+                        box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
+                        border-radius 0.25rem
+                        padding 0.125rem 0.5rem	
+                        font-family $national
+                        font-weight 700
+                        white-space nowrap
+
+                        &:hover
+                            background-color $off-white	
+
+                h5
+                    set-type-size('xx-large', true)
+                    font-family $tiempos-hed   
+                    margin 0 0 1rem 0            
+
+                .inset-bar
+                    width 100%
+                    height 1.5rem
+                    position relative
+
+                    .full
+                        width 100%
+                        position absolute
+                        top 0
+                        left 0
+                        height 1.5rem
+                        border 1px solid $off-black
+
+                    .percent
+                        height 1.5rem
+                        position absolute
+                        top 0
+                        left 0
+                        background-color $off-black
+                        width 0%
+
+                    p
+                        margin 0 0 0 0.25rem
+                        position absolute
+                        top 0
+                        font-family $national
+                        set-type-size('small', true)
+                        font-weight 700
+                        background-color transparent 
+                        opacity 0          
+
     #chart
         width 66%
 
@@ -101,7 +150,7 @@
                 align-items center
                 border 1px solid transparent
                 border-radius 0.25rem
-                pointer-events none
+                //pointer-events none
 
                 &:hover
                     border 1px solid $gray

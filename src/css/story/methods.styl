@@ -12,11 +12,15 @@
         set-type-size('small', true) 
 
     .prose
-        set-type-size('small', true) 
-        margin-bottom 1rem   
+        set-type-size('small', true)    
 
-    li
+    ul
         max-width $column-width
         margin 0 auto
+        font-family $national
         padding 0 1rem
-        set-type-size('small', true) 
+        list-style-type circle
+        list-style-position inside
+
+        li
+          set-type-size('small', true) 

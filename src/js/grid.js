@@ -62,50 +62,59 @@ function renderStep(index) {
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 1)
+            .style('filter', 'none')
     }
     if (index === 1) {
         $RWB_N.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
+            .style('filter', 'grayscale(100%)')
 
         $RWB_Y.transition()
             .duration(200)
             .ease(d3.easeLinear)
-            .style('opacity', 1)    
+            .style('opacity', 1)
+            .style('filter', 'none')    
     }
     if (index === 2) {
         $RWB_N.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
+            .style('filter', 'grayscale(100%)')
         
         $RWB_Y.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 1)
+            .style('filter', 'none')
     }
     if (index === 3) {
         $RWB_N.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 1)
+            .style('filter', 'none')
         
         $RWB_Y.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
+            .style('filter', 'grayscale(100%)')
     }
     if (index === 4) {
         $RWB_N.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 1)
+            .style('filter', 'none')
         
         $RWB_Y.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
+            .style('filter', 'grayscale(100%)')
     }
 
     if (index === 5) {
@@ -113,6 +122,7 @@ function renderStep(index) {
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 1)
+            .style('filter', 'none')
     }
 
 }

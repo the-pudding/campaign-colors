@@ -16,7 +16,17 @@
 		<div class='scroll-chart__text'>
 			{{#each copy.blockSteps}}
 				<div class='step-chart' data-step='{{{step}}}' id='step-{{{step}}}'>
+					{{#if chart}}
+					<h5>{{{hed}}}</h5>
+					<div class='inset-bar' id='{{{chartID}}}'>
+						<div class='full'></div>
+						<div class='percent'></div>
+						<p style='left: {{{chartPercent}}}%'>{{{chartPercent}}}%</p>
+					</div>
 					<p>{{{text}}}</p>
+					{{else}}
+					<p>{{{text}}}</p>
+					{{/if}}
 				</div>
 			{{/each}}
 		</div>

@@ -80,30 +80,78 @@ function colorStep0() {
 
 function colorStep1() {
   const $candidateRow = d3.selectAll('.candidate');
+  const $bar = d3.selectAll('#allCand .percent')
+  const $text = d3.selectAll('#allCand p')
 
-  $candidateRow.classed('faded', true)
-  d3.selectAll('.candidate_RWB-N').classed('faded', false).style('pointer-events', 'none')
+  $candidateRow.classed('faded', true).style('pointer-events', 'none')
+  d3.selectAll('.candidate_RWB-N').classed('faded', false)
+
+  $bar.transition()
+     .duration(250)
+     .ease(d3.easeLinear)
+     .style('width', '35.5%')
+  
+  $text.transition()
+    .duration(250)
+    .delay(250)
+    .style('opacity', '1')
 }
 
 function colorStep2() {
   const $candidateRow = d3.selectAll('.candidate');
+  const $bar = d3.selectAll('#demoCand .percent')
+  const $text = d3.selectAll('#demoCand p')
   
-  $candidateRow.classed('faded', true)
-  d3.selectAll('.candidate_RWB-N.candidate_whiteMale-FALSE').classed('faded', false).style('pointer-events', 'none')
-}
+  $candidateRow.classed('faded', true).style('pointer-events', 'none')
+  d3.selectAll('.candidate_whiteMale-FALSE').classed('faded', false)
+
+  $bar.transition()
+    .duration(250)
+    .ease(d3.easeLinear)
+    .style('width', '50%')
+
+  $text.transition()
+    .duration(250)
+    .delay(250)
+    .style('opacity', '1')
+  }
 
 function colorStep3() {
   const $candidateRow = d3.selectAll('.candidate');
+  const $bar = d3.selectAll('#raceCand .percent')
+  const $text = d3.selectAll('#raceCand p')
   
-  $candidateRow.classed('faded', true)
-  d3.selectAll('.candidate_RWB-N.candidate_white-N').classed('faded', false).style('pointer-events', 'none')
+  $candidateRow.classed('faded', true).style('pointer-events', 'none')
+  d3.selectAll('.candidate_white-N').classed('faded', false)
+
+  $bar.transition()
+    .duration(250)
+    .ease(d3.easeLinear)
+    .style('width', '38.7%')
+
+  $text.transition()
+    .duration(250)
+    .delay(250)
+    .style('opacity', '1')
 }
 
 function colorStep4() {
   const $candidateRow = d3.selectAll('.candidate');
+  const $bar = d3.selectAll('#genderCand .percent')
+  const $text = d3.selectAll('#genderCand p')
   
-  $candidateRow.classed('faded', true)
-  d3.selectAll('.candidate_RWB-N.candidate_male-N').classed('faded', false).style('pointer-events', 'none')
+  $candidateRow.classed('faded', true).style('pointer-events', 'none')
+  d3.selectAll('.candidate_male-N').classed('faded', false)
+
+  $bar.transition()
+    .duration(250)
+    .ease(d3.easeLinear)
+    .style('width', '72%')
+
+  $text.transition()
+    .duration(250)
+    .delay(250)
+    .style('opacity', '1')
 }
 
 function colorStep5() {
