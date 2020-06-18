@@ -11,6 +11,7 @@ const $graphic = $container.select('.scroll__graphic');
 const $gridDiv = $graphic.selectAll('.intro__grid')
 const $text = $container.select('.scroll__text');
 const $step = $text.selectAll('.step');
+const $step0 = d3.select('#step-0')
 const $introNameSpan = d3.selectAll('.intro-hover')
 
 // SCROLLAMA
@@ -32,7 +33,9 @@ function scrollSetup() {
 function handleResize() {
 	// 1. update height of step elements for breathing room between steps
 	const stepHeight = Math.floor(window.innerHeight * 0.75);
-	$step.style('height', stepHeight + 'px');
+    $step.style('height', stepHeight + 'px');
+    
+    $step0.style('margin-top', `-${stepHeight}px`)
 
 	// 2. update height of graphic element
 	const bodyWidth = d3.select('body').node().offsetWidth;
@@ -57,14 +60,14 @@ function renderStep(index) {
     const $RWB_N = d3.selectAll('.RWB-N')
     const $RWB_Y = d3.selectAll('.RWB-Y')
 
-    if (index === 0) {
+    if (index === 1) {
         $campaignLogos.transition()
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
     }
-    if (index === 1) {
+    if (index === 2) {
         $RWB_N.transition()
             .duration(200)
             .ease(d3.easeLinear)
@@ -77,31 +80,18 @@ function renderStep(index) {
             .style('opacity', 1)
             .style('filter', 'none')    
     }
-    if (index === 2) {
-        $RWB_N.transition()
-            .duration(200)
-            .ease(d3.easeLinear)
-            .style('opacity', 0.2)
-            .style('filter', 'grayscale(100%)')
-        
-        $RWB_Y.transition()
-            .duration(200)
-            .ease(d3.easeLinear)
-            .style('opacity', 1)
-            .style('filter', 'none')
-    }
     if (index === 3) {
         $RWB_N.transition()
             .duration(200)
             .ease(d3.easeLinear)
-            .style('opacity', 1)
-            .style('filter', 'none')
+            .style('opacity', 0.2)
+            .style('filter', 'grayscale(100%)')
         
         $RWB_Y.transition()
             .duration(200)
             .ease(d3.easeLinear)
-            .style('opacity', 0.2)
-            .style('filter', 'grayscale(100%)')
+            .style('opacity', 1)
+            .style('filter', 'none')
     }
     if (index === 4) {
         $RWB_N.transition()
@@ -116,8 +106,21 @@ function renderStep(index) {
             .style('opacity', 0.2)
             .style('filter', 'grayscale(100%)')
     }
-
     if (index === 5) {
+        $RWB_N.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)
+            .style('filter', 'none')
+        
+        $RWB_Y.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 0.2)
+            .style('filter', 'grayscale(100%)')
+    }
+
+    if (index === 6) {
         $campaignLogos.transition()
             .duration(200)
             .ease(d3.easeLinear)

@@ -27,8 +27,6 @@ d3.selection.prototype.puddingBarChart = function init(options) {
           percent_n: +d.percent_n,
           percent_y: +d.percent_y
       }))
-
-      console.log(data)
   
       // dimensions
       let width = 0;

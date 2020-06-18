@@ -72,3 +72,48 @@
                     padding 0 0 0 0.25rem
                     set-type-size('small', true)
                     font-weight 700
+
+.miniGrid
+    max-width 60rem
+    display flex
+    flex-direction column
+    margin 2rem auto
+    align-items flex-start
+
+    h5
+        width 100%
+        font-family $serif-hed
+        text-align center
+        set-type-size('x-large', true)
+        margin-bottom 1rem
+
+    .chartGrid
+        width 100%  
+        display flex
+        flex-direction row 
+        align-items flex-start  
+
+        .colorGroup
+            display flex
+            flex-direction row
+            flex-wrap wrap
+            width 50%
+            align-items flex-start
+            padding 0.5rem
+
+            p
+                width 100%
+                font-family $national
+                set-type-size('small', true)
+                color $gray-dark
+                margin 0
+
+            .logo
+                max-width 3.5rem
+                border 1px solid $off-black
+                margin 0.125rem
+                height auto
+
+                img
+                    width 100%
+                    min-height 0

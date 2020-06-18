@@ -1,8 +1,9 @@
 /* global d3 */
-import grid from "./grid";
+import grid from './grid';
 import loadData from './load-data';
 import './pudding-chart/colors-chart';
 import './pudding-chart/bar';
+import miniGrid from "./miniGrid";
 
 // initialize scrollama
 const scrollama = require("scrollama");
@@ -192,6 +193,10 @@ function init() {
 
     grid.init(data);
     setupYearChart();
+    miniGrid.init(data, 'allMin');
+    miniGrid.init(data, 'race');
+    miniGrid.init(data, 'gender');
+    miniGrid.init(data, 'minWomen');
     setupColorChart();
     handleResize();
     scrollSetup();
