@@ -1,5 +1,6 @@
 let demographicData = []
 let demographicDataNest = []
+let demoHed = null
 
 function getLastName(name) {
     let lastName = null;
@@ -29,6 +30,7 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
+        demoHed = 'all minority candidates'
     }
     if (demographic == 'race') {
         demographicData = data.filter(d => d.white == 'N')
@@ -39,6 +41,7 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
+        demoHed = 'non-White candidates'
     }
     if (demographic == 'gender') {
         demographicData = data.filter(d => d.male == 'N')
@@ -49,6 +52,7 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
+        demoHed = 'non-male candidates'    
     }
 
     if (demographic == 'minWomen') {
@@ -60,15 +64,20 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
+        demoHed = 'non-White & non-male candidates'
     }
 }
 
 function init(data, demographic) {
     filterData(data, demographic)
 
-    let $demoContainer = d3.select(`#${demographic}`)
+    const totalCands = demographicDataNest[0].values.length + demographicDataNest[1].values.length
+    const percentCands = Math.round(demographicDataNest[0].values.length/totalCands*100)
 
-    console.log(demographic, $demoContainer)
+    let $demoContainer = d3.select(`#${demographic}`)
+    let $demoSen = d3.select(`#${demographic}-sen`)
+
+    $demoSen.html(`<span>...${percentCands}%</span> of ${demoHed}`)
 
     let $colorContainer = $demoContainer.selectAll('.colorGroup')
         .data(demographicDataNest)

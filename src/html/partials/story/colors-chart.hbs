@@ -1,34 +1,52 @@
 <section class='colors-chart'>
-	<div id='scroll-chart'>
-		<div class='scroll-chart__graphic sticky'>
-			<div id='chart'></div>
-		</div>
-        <div class='scroll-chart__overlay'>
+		<div id='chart'></div>
+        <div class='overlay'>
+			<div class='controls'>
+				<p class='directions'>Search for a candidate</p>
+				<input type='text' class='input__search' placeholder='Name'>
+				<p class='directions'>Filter by...</p>
+				<div class='checkbox-container'>
+					<div class='checkbox-column'>
+						<p>Color</p>
+						<div class='checkbox-wrapper'>
+							<input type='checkbox' class='input__check' value='color'>
+							<label for='color'>RWB</label>
+						</div>
+						<div class='checkbox-wrapper'>
+							<input type='checkbox' class='input__check' value='color'>
+							<label for='color'>Non-RWB</label>
+						</div>
+					</div>
+					<div class='checkbox-column'>
+						<p>Race</p>
+						<div class='checkbox-wrapper'>
+							<input type='checkbox' class='input__check' value='race'>
+							<label for='color'>White</label>
+						</div>
+						<div class='checkbox-wrapper'>
+							<input type='checkbox' class='input__check' value='race'>
+							<label for='color'>Non-White</label>
+						</div>
+					</div>
+					<div class='checkbox-column'>
+						<p>Gender</p>
+						<div class='checkbox-wrapper'>
+							<input type='checkbox' class='input__check' value='gender'>
+							<label for='color'>Male</label>
+						</div>
+						<div class='checkbox-wrapper'>
+							<input type='checkbox' class='input__check' value='gender'>
+							<label for='color'>Non-male</label>
+						</div>
+					</div>
+				</div>
+			</div>
             <div class='overlay-inset'>
-                <h5>Candidate name</h5>
-                <p class='party'>Party, year</p>
-                <img src='assets/images/1968-cleaver.jpg'>
-                <p class='notes'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec volutpat, nisl at bibendum tincidunt, metus ligula porttitor neque, quis fermentum neque arcu at diam. Phasellus luctus ac nisl eu ultricies. Aenean vitae ligula maximus, facilisis augue quis, dictum ligula. Maecenas dictum est justo, vel tincidunt libero porta ac. Integer magna sem, efficitur vel molestie non, scelerisque sit amet ligula.
-                </p>
+                <h5></h5>
+                <p class='party'></p>
+				<p class='demos'><span class='color'></span><span class='race'></span><span class='gender'></span></p>
+                <img>
+                <p class='notes'></p>
             </div>
         </div>
-		<div class='scroll-chart__text'>
-			{{#each copy.blockSteps}}
-				<div class='step-chart' data-step='{{{step}}}' id='step-{{{step}}}'>
-					{{#if chart}}
-					<h5>{{{hed}}}</h5>
-					<div class='inset-bar' id='{{{chartID}}}'>
-						<div class='full'></div>
-						<div class='percent'></div>
-						<p style='left: {{{chartPercent}}}%'>{{{chartPercent}}}%</p>
-					</div>
-					<p>{{{text}}}</p>
-					{{else}}
-					<p>{{{text}}}</p>
-					{{/if}}
-				</div>
-			{{/each}}
-		</div>
-	</div>
 </section>

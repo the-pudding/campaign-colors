@@ -23,10 +23,13 @@ d3.selection.prototype.puddingColorChart = function init(options) {
       let $redBlock = null;
       let $whiteBlock = null;
       let $blueBlock = null;
-      const $overlay = d3.select('.scroll-chart__overlay')
+      const $overlay = d3.select('.overlay')
       const $overlayInset = $overlay.select('.overlay-inset')
       const $overlayName = $overlayInset.select('h5')
       const $overlayParty = $overlayInset.select('.party')
+      const $overlayColor = $overlayInset.select('.color')
+      const $overlayRace = $overlayInset.select('.race')
+      const $overlayGender = $overlayInset.select('.gender')
       const $overlayImg = $overlayInset.select('img')
       const $overlayNotes = $overlayInset.select('.notes')
   
@@ -47,19 +50,37 @@ d3.selection.prototype.puddingColorChart = function init(options) {
       // const scaleY = null;
   
       // helper functions
+      function returnColor(color) {
+        if (color == 'Y') { return 'RWB'}
+        else { return 'Non-RWB'}
+      }
+
+      function returnRace(race) {
+        if (race == 'Y') { return 'White'}
+        else { return 'Non-White'}
+      }
+
+      function returnGender(gender) {
+        if (gender == 'Y') { return 'Male'}
+        else { return 'Non-male'}
+      }
+
       function chartMouseover(d, i) {
         $candidateRow.classed('faded', true)
         d3.select(this).classed('faded', false)
-        $overlay.classed('is-visible', true)
+        $overlayInset.classed('is-visible', true)
 
         $overlayName.text(`${d.name}`)
         $overlayParty.text(`${d.party}, ${d.year}`)
+        $overlayColor.text(`${returnColor(d.RWB)}`)
+        $overlayRace.text(`${returnRace(d.white)}`)
+        $overlayGender.text(`${returnGender(d.male)}`)
         $overlayImg.attr('src', `assets/images/${d.image}`)
       }
 
       function chartMouseout() {
         $candidateRow.classed('faded', false)
-        $overlay.classed('is-visible', false)
+        $overlayInset.classed('is-visible', false)
       }
   
       const Chart = {
@@ -163,11 +184,11 @@ d3.selection.prototype.puddingColorChart = function init(options) {
           height = $chart.node().offsetHeight - MARGIN_TOP - MARGIN_BOTTOM;
 
           const totalCandidates = data.length
-          const barHeight = Math.floor((height)/totalCandidates)
+          const barHeight = Math.floor((height)/totalCandidates*2)
           const colorBlocks = d3.selectAll('.color-block')
           
-          d3.selectAll('.color-block').style('height', `${barHeight}px`)
-          d3.selectAll('.candidate').style('height', `${barHeight}px`)
+          d3.selectAll('.color-block').style('height', `8px`)
+          d3.selectAll('.candidate').style('height', `10px`)
 
           return Chart;
         },
