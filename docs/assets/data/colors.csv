@@ -164,7 +164,7 @@ David Duke,1992,Republican,N,N,Y,Y,TRUE,Y,,#ffffff,#022d6d,,,,1992-duke.jpg
 Ross Perot,1992,Independent,Y,N,Y,Y,TRUE,Y,#e60000,#ffffff,#00008e,,,,1992-perot.jpg
 Howard Phillips,1992,U.S. Taxpayers,Y,N,Y,Y,TRUE,Y,,#ffffff,#092aab,,,,1992-phillips.jpg
 Bo Gritz,1992,Populist,Y,N,Y,Y,TRUE,Y,#af1711,#ffffff,#1243cd,,,,1992-gritz.jpg
-Ron Daniels,1992,Independent,N,N,N,N,FALSE,N,#ff0000,#ffffff,,#000000,,,1992-daniels.jpg
+Ron Daniels,1992,Independent,N,N,N,Y,FALSE,N,#ff0000,#ffffff,,#000000,,,1992-daniels.jpg
 Bob Dole,1988,Republican,N,N,Y,Y,TRUE,N,,,#000187,#FCDC00,,,1988-dole.jpg
 George H.W. Bush,1988,Republican,Y,Y,Y,Y,TRUE,Y,#cd0000,#ffffff,#00008c,,,,1988-bush.jpg
 Jesse Jackson,1988,Democratic,N,N,N,Y,FALSE,Y,#bb0000,#ffffff,,,,,1988-jackson.jpg
@@ -256,7 +256,7 @@ Patsy Mink,1972,Democratic,N,N,N,N,FALSE,N,,,#2c628c,#fad6d8,,,1972-mink.jpg
 John G. Schmitz,1972,American Independent,Y,N,Y,Y,TRUE,Y,#fa2b2b,#ffffff,#060cff,,,,1972-schmitz.jpg
 John Hospers,1972,Libertarian,Y,N,Y,Y,TRUE,N,,#ffffff,,#2d1a7b,,,1972-hospers.jpg
 Linda Jenness,1972,Socialist Workers,Y,N,Y,N,FALSE,N,,#ffffff,,#66d14a,#000000,,1972-jenness.jpg
-Benjamin Spock,1972,Peoples,Y,N,Y,Y,TRUE,N,,,,#c63019,#000000,,1972-spock.jpg
+Benjamin Spock,1972,Peoples,Y,N,Y,Y,TRUE,N,#c63019,,,#000000,,,1972-spock.jpg
 Hubert Humphrey,1968,Democratic,Y,N,Y,Y,TRUE,Y,#DA3F2B,#ffffff,#061E78,,,,1968-humphrey.jpg
 George Wallace,1968,Independent,Y,N,Y,Y,TRUE,Y,#FF5E4D,,#1F2E63,,,,1968-wallace.jpg
 Nelson Rockefeller,1968,Republican,N,N,Y,Y,TRUE,Y,,#ffffff,#030473,,,,1968-rockefeller.jpg
