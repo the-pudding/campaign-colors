@@ -1,7 +1,7 @@
 .colors-chart
     width 100%
     padding 0 1rem
-    margin 3rem auto
+    margin 3rem auto 5rem auto
     max-width 70rem
     display flex
     flex-direction row
@@ -38,12 +38,14 @@
                 width 100%
                 display flex
                 flex-direction row 
-                justify-content space-between  
+                justify-content space-between 
+                flex-wrap wrap 
 
                 .checkbox-column
-                    width 30%
+                    width 48%
                     display flex
                     flex-direction column
+                    margin-bottom 2rem
 
                     p
                         font-family $national
@@ -73,12 +75,13 @@
             position absolute
             top 4rem
             left 2rem
-            background-color $white
+            background-color rgba($white, 0.98)
             display none
             width 100%
+            height 100vh
 
             &.is-visible
-                opacity 0.98
+                opacity 1
                 display block 
 
             h5
