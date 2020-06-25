@@ -4,15 +4,14 @@ import loadData from './load-data';
 import './pudding-chart/colors-chart';
 import './pudding-chart/bar';
 import miniGrid from "./miniGrid";
-
-// initialize scrollama
-const scrollama = require("scrollama");
+import enterView from 'enter-view';
 
 let data = null;
 let yearData = null;
 
 let colorChart = null;
 const $colorChartDiv = d3.select('#chart')
+const $overlay = d3.select('.overlay')
 
 let yearChart = null;
 const $yearChartDiv = d3.select('#year-chart')
@@ -44,6 +43,18 @@ function init() {
     miniGrid.init(data, 'gender');
     miniGrid.init(data, 'minWomen');
     setupColorChart();
+
+    enterView({
+      selector: '.methods',
+      enter: function(el) {
+        $overlay.classed('is-visible', false)
+      },
+      exit: function(el) {
+        $overlay.classed('is-visible', true)
+      },
+      offset: 0.6
+    });
+
 	}).catch(console.error);
 }
 

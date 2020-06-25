@@ -8,10 +8,14 @@
 
     .overlay 
         width 33%
-        position sticky
+        display none
         align-self flex-start
         padding 4rem 0 0 2rem
         top 0
+        position sticky
+
+        &.is-visible
+            display flex
 
         .controls
             position absolute

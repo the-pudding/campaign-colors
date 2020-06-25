@@ -8,6 +8,7 @@
     "node": "10.18.0"
   },
   "dependencies": {
+    "enter-view": "^2.0.0",
     "fs": "0.0.1-security",
     "intersection-observer": "^0.10.0",
     "lodash.debounce": "4.0.8",
