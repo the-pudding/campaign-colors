@@ -92,11 +92,11 @@ function init(data, demographic) {
             else { return `RWB (${d.values.length} candidates)`}
         })
     
-    let $imgDiv = $colorContainer.selectAll('.logo')
+    let $imgDiv = $colorContainer.selectAll('.logoSmall')
         .data(d => d.values)
         .enter()
         .append('div')
-        .attr('class', 'logo')
+        .attr('class', d => `logoSmall logoSmall-${d.nameID}`)
     
     $imgDiv.append('img').attr('src', d => `assets/images/${d.year}-${d.nameID}.jpg`)
     

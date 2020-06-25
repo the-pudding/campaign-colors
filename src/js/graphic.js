@@ -15,6 +15,63 @@ const $overlay = d3.select('.overlay')
 
 let yearChart = null;
 const $yearChartDiv = d3.select('#year-chart')
+const $candidateNameSpan = d3.selectAll('.cand-hover')
+const $checkbox_party_r = d3.selectAll('#party-r')
+const $checkbox_party_d = d3.selectAll('#party-d')
+const $checkbox_party_t = d3.selectAll('#party-t')
+const $checkbox_color_rwb = d3.selectAll('#color-rwb')
+const $checkbox_color_nrwb = d3.selectAll('#color-nrwb')
+const $checkbox_race_w = d3.selectAll('#race-w')
+const $checkbox_race_nw = d3.selectAll('#race-nw')
+const $checkbox_gender_m = d3.selectAll('#gender-m')
+const $checkbox_gender_nm = d3.selectAll('#gender-nm')
+
+// INTERACTIONS
+function highlightName() {
+  const $name = d3.select(this).attr('id').split('-')[0]
+  const $parent = d3.select(this.parentNode).attr('id').split('-')[0]
+
+  console.log($name, $parent)
+  
+  const $logo = d3.selectAll(`.logoSmall-${$name}`)
+  const $logoDivs = d3.selectAll(`#${$parent} .logoSmall`)
+
+  $logoDivs.transition()
+       .duration(200)
+       .ease(d3.easeLinear)
+       .style('opacity', 0.2)
+       .style('filter', 'grayscale(100%)')
+  $logo.transition()
+       .duration(200)
+       .ease(d3.easeLinear)
+       .style('opacity', 1)
+       .style('filter', 'none')
+}
+
+function dehighlightName() {
+   const $logoDivs = d3.selectAll('.logoSmall')
+   $logoDivs.transition()
+        .duration(200)
+        .ease(d3.easeLinear)
+        .style('opacity', 1)
+        .style('filter', 'none')
+}
+
+// FILTERS
+function checkCheckboxes() {
+  const $checkbox_party_r_status = $checkbox_party_r.node().checked)
+  const $checkbox_party_d_status = $checkbox_party_d.node().checked)
+  const $checkbox_party_t_status = $checkbox_party_t.node().checked)
+
+  const $checkbox_color_rwb_status = $checkbox_party_color_rwb.node().checked)
+  const $checkbox_color_nrwb_status = $checkbox_party_color_nrwb.node().checked)
+
+  const $checkbox_race_w_status = $checkbox_party_race_w.node().checked)
+  const $checkbox_race_nw_status = $checkbox_party_race_nw.node().checked)
+
+  const $checkbox_gender_m_status = $checkbox_party_gender_m.node().checked)
+  const $checkbox_gender_nm_status = $checkbox_party_gender_nm.node().checked)
+}
 
 function setupColorChart() {
   colorChart = $colorChartDiv
@@ -54,6 +111,13 @@ function init() {
       },
       offset: 0.6
     });
+
+    // INTERACTIONS
+    $candidateNameSpan.on('mouseenter', highlightName)
+    $candidateNameSpan.on('mouseleave', dehighlightName)
+
+    // FILTERS
+    checkCheckboxes()
 
 	}).catch(console.error);
 }

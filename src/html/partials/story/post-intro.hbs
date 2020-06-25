@@ -15,28 +15,28 @@
         <h5 id='allMin-sen'>All minority candidates</h5>
         <div class='chartGrid' id='allMin'></div>
         {{#each copy.minCands}}
-        <p class='prose'>{{{value}}}</p>
+        <p class='prose' id='allMin-prose'>{{{value}}}</p>
         {{/each}}
     </div>
     <div class='miniGrid'>
         <h5 id='race-sen'>Non-white candidates</h5>
         <div class='chartGrid' id='race'></div>
         {{#each copy.whiteCands}}
-        <p class='prose'>{{{value}}}</p>
+        <p class='prose' id='race-prose'>{{{value}}}</p>
         {{/each}}
     </div>
     <div class='miniGrid'>
         <h5 id='gender-sen'>Non-male candidates</h5>
         <div class='chartGrid' id='gender'></div>
         {{#each copy.maleCands}}
-        <p class='prose'>{{{value}}}</p>
+        <p class='prose' id='gender-prose'>{{{value}}}</p>
         {{/each}}
     </div>
     <div class='miniGrid'>
         <h5 id='minWomen-sen'>Non-white &amp; non-male candidates</h5>
         <div class='chartGrid' id='minWomen'></div>
         {{#each copy.minWomenCands}}
-        <p class='prose'>{{{value}}}</p>
+        <p class='prose' id='minWomen-prose'>{{{value}}}</p>
         {{/each}}
     </div>
 </section>
