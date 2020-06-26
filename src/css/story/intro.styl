@@ -34,7 +34,7 @@
 			top 0
 			max-width 30rem
 			width 100%
-			padding 0
+			padding 0 1rem
 			margin 1rem auto
 
 			.step.is-active
@@ -47,7 +47,7 @@
 				p
 					background-color $white	
 					padding 1rem
-					box-shadow 0.5rem 0.5rem 1rem rgba($off-black, 0.5)	
+					box-shadow 0.25rem 0.25rem 2rem rgba($off-black, 0.125)	
 					line-height 1.75
 
 				.intro-hover
@@ -65,9 +65,13 @@
 			#step-0
 				p
 					font-family $serif-display
-					set-type-size('xxxx-large', true)
+					set-type-size('xx-large', true)
 					text-align center
 					font-weight 700
+					+mq('bp-3')
+						set-type-size('xxx-large', true)
+					+mq('bp-4')
+						set-type-size('xxxx-large', true)
 
 					.byline
 						font-family $national

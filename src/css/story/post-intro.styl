@@ -94,12 +94,13 @@
     flex-direction column
     margin 2rem auto
     align-items flex-start
+    padding 0
 
     h5
         width 100%
         font-family $serif-hed
         set-type-size('x-large', true)
-        margin-bottom 1rem
+        margin 0 1rem 1rem 1rem
         width 100%
         border-top 1px solid rgba($gray, 0.5)
         padding-top 0.5rem
@@ -113,7 +114,10 @@
         display flex
         flex-direction row 
         align-items flex-start 
-        margin-bottom 3rem 
+        margin-bottom 2rem
+        padding 0 1rem
+        +mq('bp-4')
+          margin-bottom 3rem   
 
         .colorGroup
             display flex
@@ -121,7 +125,7 @@
             flex-wrap wrap
             width 50%
             align-items flex-start
-            padding 0.5rem
+            //padding 0.5rem
 
             p
                 width 100%

@@ -1,18 +1,28 @@
 .colors-chart
     width 100%
-    padding 0 1rem
     margin 3rem auto 5rem auto
     max-width 70rem
     display flex
-    flex-direction row
+    flex-direction column
+    +mq('bp-5')
+        flex-direction row
 
     .overlay 
-        width 33%
+        width 100%
         display none
         align-self flex-start
-        padding 4rem 0 0 2rem
         top 0
         position sticky
+        order 0
+        height 20rem
+        padding 0 1rem
+        background-color rgba($white, 0.98)
+        box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
+        +mq('bp-5')
+            order 1
+            height auto
+            width 33%
+            box-shadow none
 
         &.is-visible
             display flex
@@ -20,9 +30,10 @@
         .controls
             position absolute
             top 4rem
-            left 2rem
+            left 0
             width 100%
             display flex
+            padding 0 1rem
             flex-direction column
 
             .directions
@@ -36,7 +47,9 @@
             .input__search
                 width 100%
                 height 2rem
-                margin-bottom 4rem
+                margin-bottom 2rem
+                +mq('bp-5')
+                    margin-bottom 4rem
 
             .checkbox-container
                 width 100%
@@ -46,16 +59,20 @@
                 flex-wrap wrap 
 
                 .checkbox-column
-                    width 48%
+                    width 24%
                     display flex
                     flex-direction column
                     margin-bottom 2rem
+                    +mq('bp-5')
+                        width 48%
 
                     p
                         font-family $national
-                        set-type-size('root', true) 
+                        set-type-size('small', true) 
                         font-weight 700
                         margin 0
+                        +mq('bp-3')
+                            set-type-size('root', true)
 
                     .checkbox-wrapper
                         display flex
@@ -71,18 +88,25 @@
                         label   
                             font-family $national
                             padding 0 0 0 0.25rem
-                            set-type-size('small', true)
+                            set-type-size('x-small', true)
+                            +mq('bp-3')
+                                set-type-size('small', true)
 
 
         .overlay-inset
             opacity 0
             position absolute
             top 4rem
-            left 2rem
+            left 0
             background-color rgba($white, 0.98)
             display none
             width 100%
-            height 100vh
+            padding 0 1rem
+            height auto
+            box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
+            +mq('bp-5')
+              height 100vh 
+              box-shadow none 
 
             &.is-visible
                 opacity 1
@@ -116,7 +140,14 @@
                 margin-right 0.5rem  
 
     #chart
-        width 66%
+        width 100%
+        margin-right 0
+        order 1
+        padding 0 1rem
+        +mq('bp-5')
+            order 0
+            width 66%
+            margin-right 2rem
 
         .pudding-chart
             width 100%
@@ -168,10 +199,12 @@
                     padding 0 1rem 0 0.5rem    
 
                     .color-block
-                        width 3.65rem
+                        width 3rem
                         //height 1.5rem
                         border 1px solid $off-black  
                         margin 0 0.5rem 0 0
+                        +mq('bp-5')
+                            width 3.5rem
 
                         &.empty-block
                             border 3px solid transparent
