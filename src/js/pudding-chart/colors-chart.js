@@ -114,7 +114,11 @@ d3.selection.prototype.puddingColorChart = function init(options) {
             .append('div')
             .attr('class', function(d) {
               const nameStripped = (d.name).replace(/\s+/g, '').replace('.', '').replace("'", '')
-              return `candidate candidate_${nameStripped} candidate_RWB-${d.RWB} candidate_white-${d.white} candidate_male-${d.male} candidate_whiteMale-${d.whiteMale}`
+              let partyStripped = null;
+              if (d.party == 'Democratic') { partyStripped = d.party }
+              else if (d.party == 'Republican') { partyStripped = d.party }
+              else { partyStripped = 'Third' }
+              return `candidate candidate_${nameStripped} candidate_RWB-${d.RWB} candidate_white-${d.white} candidate_male-${d.male} candidate_whiteMale-${d.whiteMale} candidate_party-${partyStripped}`
             })
             .on('mouseover', chartMouseover)
             .on('mouseout', chartMouseout)

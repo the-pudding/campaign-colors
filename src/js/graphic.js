@@ -16,6 +16,7 @@ const $overlay = d3.select('.overlay')
 let yearChart = null;
 const $yearChartDiv = d3.select('#year-chart')
 const $candidateNameSpan = d3.selectAll('.cand-hover')
+const $allCheckboxes = d3.selectAll('.input__check')
 const $checkbox_party_r = d3.selectAll('#party-r')
 const $checkbox_party_d = d3.selectAll('#party-d')
 const $checkbox_party_t = d3.selectAll('#party-t')
@@ -58,19 +59,108 @@ function dehighlightName() {
 }
 
 // FILTERS
+function checkParty() {
+  console.log('checkParty')
+  const $checkbox_party_r_status = $checkbox_party_r.node().checked
+  const $checkbox_party_d_status = $checkbox_party_d.node().checked
+  const $checkbox_party_t_status = $checkbox_party_t.node().checked
+
+  if ($checkbox_party_r_status === false) {
+    d3.selectAll('.candidate_party-Republican').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+
+  if ($checkbox_party_d_status === false) {
+    d3.selectAll('.candidate_party-Democratic').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+
+  if ($checkbox_party_t_status === false) {
+    d3.selectAll('.candidate_party-Third').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+}
+
+function checkColor() {
+  console.log('checkColor')
+  const $checkbox_color_rwb_status = $checkbox_color_rwb.node().checked
+  const $checkbox_color_nrwb_status = $checkbox_color_nrwb.node().checked
+
+  if ($checkbox_color_rwb_status === false) {
+    d3.selectAll('.candidate_RWB-Y').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+
+  if ($checkbox_color_nrwb_status === false) {
+    d3.selectAll('.candidate_RWB-N').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+}
+
+function checkRace() {
+  console.log('checkRace')
+  const $checkbox_race_w_status = $checkbox_race_w.node().checked
+  const $checkbox_race_nw_status = $checkbox_race_nw.node().checked
+
+  if ($checkbox_race_w_status === false) {
+    d3.selectAll('.candidate_white-Y').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+
+  if ($checkbox_race_nw_status === false) {
+    d3.selectAll('.candidate_white-N').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+}
+
+function checkGender() {
+  console.log('checkGender')
+  const $checkbox_gender_m_status = $checkbox_gender_m.node().checked
+  const $checkbox_gender_nm_status = $checkbox_gender_nm.node().checked
+
+  if ($checkbox_gender_m_status === false) {
+    d3.selectAll('.candidate_male-Y').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+
+  if ($checkbox_gender_nm_status === false) {
+    d3.selectAll('.candidate_male-N').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  }
+}
+
 function checkCheckboxes() {
-  const $checkbox_party_r_status = $checkbox_party_r.node().checked)
-  const $checkbox_party_d_status = $checkbox_party_d.node().checked)
-  const $checkbox_party_t_status = $checkbox_party_t.node().checked)
-
-  const $checkbox_color_rwb_status = $checkbox_party_color_rwb.node().checked)
-  const $checkbox_color_nrwb_status = $checkbox_party_color_nrwb.node().checked)
-
-  const $checkbox_race_w_status = $checkbox_party_race_w.node().checked)
-  const $checkbox_race_nw_status = $checkbox_party_race_nw.node().checked)
-
-  const $checkbox_gender_m_status = $checkbox_party_gender_m.node().checked)
-  const $checkbox_gender_nm_status = $checkbox_party_gender_nm.node().checked)
+  checkParty()
+  checkColor()
+  checkRace()
+  checkGender()
 }
 
 function setupColorChart() {
@@ -117,7 +207,7 @@ function init() {
     $candidateNameSpan.on('mouseleave', dehighlightName)
 
     // FILTERS
-    checkCheckboxes()
+    $allCheckboxes.on('change', checkCheckboxes)
 
 	}).catch(console.error);
 }

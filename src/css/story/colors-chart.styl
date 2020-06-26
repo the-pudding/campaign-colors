@@ -142,7 +142,10 @@
                 align-items center
                 border 1px solid transparent
                 border-radius 0.25rem
-                //pointer-events none
+                pointer-events auto
+
+                &.is-disabled
+                    pointer-events none
 
                 &:hover
                     border 1px solid $gray
