@@ -141,6 +141,7 @@ function loadGrid() {
         .attr('class', d => `logoDiv logoDiv-${d.nameID} RWB-${d.RWB}`)
         .append('img')
         .attr('src', d => `assets/images/2020-${d.nameID}.jpg`)
+        .attr('alt', d => `${d.name} campaign logo`)
 }
 
 // fade in grid

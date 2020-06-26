@@ -75,7 +75,9 @@ d3.selection.prototype.puddingColorChart = function init(options) {
         $overlayColor.text(`${returnColor(d.RWB)}`)
         $overlayRace.text(`${returnRace(d.white)}`)
         $overlayGender.text(`${returnGender(d.male)}`)
-        $overlayImg.attr('src', `assets/images/${d.image}`)
+        $overlayImg
+          .attr('src', `assets/images/${d.image}`)
+          .attr('alt', `${d.name} campaign logo`)
       }
 
       function chartMouseout() {

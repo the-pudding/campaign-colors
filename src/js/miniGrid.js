@@ -98,7 +98,9 @@ function init(data, demographic) {
         .append('div')
         .attr('class', d => `logoSmall logoSmall-${d.nameID}`)
     
-    $imgDiv.append('img').attr('src', d => `assets/images/${d.year}-${d.nameID}.jpg`)
+    $imgDiv.append('img')
+        .attr('src', d => `assets/images/${d.year}-${d.nameID}.jpg`)
+        .attr('alt', d => `${d.name} campaign logo`)
     
     
 }
