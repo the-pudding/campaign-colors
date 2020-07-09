@@ -14,10 +14,12 @@
         top 0
         position sticky
         order 0
-        height 20rem
+        height 16rem
         padding 0 1rem
         background-color rgba($white, 0.98)
         box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
+        +mq('bp-3')
+            height 20rem
         +mq('bp-5')
             order 1
             height auto
@@ -42,15 +44,17 @@
                 .autocomplete__wrapper
                     width 100%
                     position relative
-                    margin-bottom 2rem
+                    margin-bottom 1rem
                     +mq('bp-5')
                         margin-bottom 4rem
 
                     input
                         width 100%
-                        height 2rem
+                        height 1.5rem
                         border 1px solid rgba($gray-light, 0.5)
                         padding 0 0.25rem
+                        +mq('bp-3')
+                            height 2rem
 
                     .autocomplete__menu--visible
                         display block
@@ -79,11 +83,11 @@
 
             label, .directions
                 font-family $national
-                margin 0 0 0.5rem 0
+                margin 0
                 set-type-size('medium', true)
                 font-weight 700
-                //border-top 1px solid rgba($gray-light, 0.5)
-                //padding-top 0.5rem
+                +mq('bp-3')
+                  margin 0 0 0.5rem 0  
 
             .checkbox-container
                 width 100%
@@ -112,12 +116,17 @@
                         display flex
                         align-items center 
                         width 100%   
-                        padding-right 1rem
+                        padding-right 0.25rem
+                        +mq('bp-3')
+                            padding-right 1rem
 
                         .input__check
-                            width 1rem
-                            height 1rem 
+                            width 0.75rem 
+                            height 0.75rem 
                             margin 0  
+                            +mq('bp-3')
+                                width 1rem
+                                height 1rem 
 
                         label   
                             font-family $national
@@ -160,7 +169,11 @@
 
             img
                 width 100%
-                margin 1rem 0
+                margin 1rem auto
+                +mq('bp-3')
+                    width 75%
+                +mq('bp-5')
+                    width 100%
 
             .notes
                 font-family $tiempos
@@ -177,13 +190,13 @@
 
     #chart
         width 100%
-        margin-right 0
+        margin 1rem 0 0 0
         order 1
         padding 0 1rem
         +mq('bp-5')
             order 0
             width 66%
-            margin-right 2rem
+            margin 0 2rem 0 0
 
         .pudding-chart
             width 100%
@@ -235,10 +248,12 @@
                     padding 0 1rem 0 0.5rem    
 
                     .color-block
-                        width 3rem
+                        width 2.5rem
                         //height 1.5rem
                         border 1px solid $off-black  
                         margin 0 0.5rem 0 0
+                        +mq('bp-3')
+                            width 3rem
                         +mq('bp-5')
                             width 3.5rem
 

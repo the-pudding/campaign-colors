@@ -1,10 +1,10 @@
 {
-	"title": "Title Case Hed Goes Here",
-	"description": "Sentence case dek goes down here. Modify these in data/meta.json.",
+	"title": "How candidate diversity equals color diversity",
+	"description": "We looked at 272 presidential candidate logos from 1968–2020 to find out how race and gender intersect with color choices.",
 	"site": "https://pudding.cool",
 	"siteName": "The Pudding",
 	"url": "https://pudding.cool/year/month/name/",
-	"keywords": "tk",
+	"keywords": "politics, color, campaign, president, logo, rae, gender",
 	"imgFacebook": "https://pudding.cool/year/month/name/assets/social/social-facebook.jpg",
 	"imgTwitter": "https://pudding.cool/year/month/name/assets/social/social-twitter.jpg",
 	"author": {

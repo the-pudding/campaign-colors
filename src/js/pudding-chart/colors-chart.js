@@ -84,6 +84,11 @@ d3.selection.prototype.puddingColorChart = function init(options) {
         $candidateRow.classed('faded', false)
         $overlayInset.classed('is-visible', false)
       }
+
+      function chartScroll() {
+        $candidateRow.classed('faded', false)
+        $overlayInset.classed('is-visible', false)
+      }
   
       const Chart = {
         // called once at start
@@ -124,6 +129,7 @@ d3.selection.prototype.puddingColorChart = function init(options) {
             })
             .on('mouseover', chartMouseover)
             .on('mouseout', chartMouseout)
+            .on('scroll', chartScroll)
 
           $rwbGroup = $candidateRow
             .append('div')

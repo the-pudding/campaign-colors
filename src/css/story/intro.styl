@@ -29,13 +29,19 @@
 			right 0
 			transform translate3d(0, 0, 0)
 
+			h1
+				visibility hidden
+				position absolute
+
 		.scroll__text
 			position relative
 			top 0
 			max-width 30rem
 			width 100%
-			padding 0 1rem
+			padding 0 2rem
 			margin 1rem auto
+			+mq('bp-5')
+				padding 0 1rem
 
 			.step.is-active
 				opacity 1
@@ -87,3 +93,10 @@
 						height 35px
 						display inline-block
 						margin-top 2rem	
+						animation updown 1s infinite  alternate;
+
+@keyframes updown {
+	0% { transform: translateY(0) }
+	100% { transform: translateY(-0.75rem) }
+}						
+

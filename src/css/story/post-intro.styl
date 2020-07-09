@@ -1,5 +1,6 @@
 .post-intro
    .prose
+
         .cand-hover
             border 1px solid $gray
             box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
@@ -94,13 +95,16 @@
     flex-direction column
     margin 2rem auto
     align-items flex-start
-    padding 0
+    padding 0 1rem
+    
+    .prose
+        padding 1rem 0    
 
     h5
         width 100%
         font-family $serif-hed
         set-type-size('x-large', true)
-        margin 0 1rem 1rem 1rem
+        margin 0 0 1rem 0
         width 100%
         border-top 1px solid rgba($gray, 0.5)
         padding-top 0.5rem
@@ -115,9 +119,9 @@
         flex-direction row 
         align-items flex-start 
         margin-bottom 2rem
-        padding 0 1rem
+        padding 0
         +mq('bp-4')
-          margin-bottom 3rem   
+          margin-bottom 3rem 
 
         .colorGroup
             display flex
