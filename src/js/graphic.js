@@ -5,6 +5,7 @@ import './pudding-chart/colors-chart';
 import './pudding-chart/bar';
 import miniGrid from "./miniGrid";
 import enterView from 'enter-view';
+import autocomplete from 'accessible-autocomplete'
 
 let data = null;
 let yearData = null;
@@ -31,8 +32,6 @@ const $checkbox_gender_nm = d3.selectAll('#gender-nm')
 function highlightName() {
   const $name = d3.select(this).attr('id').split('-')[0]
   const $parent = d3.select(this.parentNode).attr('id').split('-')[0]
-
-  console.log($name, $parent)
   
   const $logo = d3.selectAll(`.logoSmall-${$name}`)
   const $logoDivs = d3.selectAll(`#${$parent} .logoSmall`)
@@ -60,7 +59,6 @@ function dehighlightName() {
 
 // FILTERS
 function checkParty() {
-  console.log('checkParty')
   const $checkbox_party_r_status = $checkbox_party_r.node().checked
   const $checkbox_party_d_status = $checkbox_party_d.node().checked
   const $checkbox_party_t_status = $checkbox_party_t.node().checked
@@ -91,7 +89,6 @@ function checkParty() {
 }
 
 function checkColor() {
-  console.log('checkColor')
   const $checkbox_color_rwb_status = $checkbox_color_rwb.node().checked
   const $checkbox_color_nrwb_status = $checkbox_color_nrwb.node().checked
 
@@ -113,7 +110,6 @@ function checkColor() {
 }
 
 function checkRace() {
-  console.log('checkRace')
   const $checkbox_race_w_status = $checkbox_race_w.node().checked
   const $checkbox_race_nw_status = $checkbox_race_nw.node().checked
 
@@ -135,7 +131,6 @@ function checkRace() {
 }
 
 function checkGender() {
-  console.log('checkGender')
   const $checkbox_gender_m_status = $checkbox_gender_m.node().checked
   const $checkbox_gender_nm_status = $checkbox_gender_nm.node().checked
 
@@ -157,12 +152,54 @@ function checkGender() {
 }
 
 function checkCheckboxes() {
+  d3.selectAll('.candidate').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 1)
+      .style('pointer-events', 'auto')
+
   checkParty()
   checkColor()
   checkRace()
   checkGender()
 }
 
+// AUTOCOMPLETE
+function setupCandidateSearch() {
+  let onlyNames = data.map(d => d.name)
+  onlyNames = [...new Set(onlyNames)];
+
+  autocomplete({
+    element: document.querySelector('#autocomplete'),
+    id: 'my-autocomplete',
+    source: onlyNames,
+    displayMenu: 'overlay',
+    minLength: 3,
+    confirmOnBlur: true,
+    onConfirm(name) {
+      highlightCandidate(name)
+    }
+  });
+}
+
+function highlightCandidate(name) {
+
+  const nameStripped = (name).replace(/\s+/g, '').replace('.', '').replace("'", '')
+
+  d3.selectAll('.candidate').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 0.2)
+      .style('pointer-events', 'none')
+  
+  d3.selectAll(`.candidate_${nameStripped}`).transition()
+    .duration(200)
+    .ease(d3.easeLinear)
+    .style('opacity', 1)
+    .style('pointer-events', 'auto')
+}
+
+// CHARTS
 function setupColorChart() {
   colorChart = $colorChartDiv
     .datum(data)
@@ -206,7 +243,8 @@ function init() {
     $candidateNameSpan.on('mouseenter', highlightName)
     $candidateNameSpan.on('mouseleave', dehighlightName)
 
-    // FILTERS
+    // FILTERS & SEARCH
+    setupCandidateSearch();
     $allCheckboxes.on('change', checkCheckboxes)
 
 	}).catch(console.error);

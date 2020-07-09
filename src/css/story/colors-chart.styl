@@ -33,23 +33,57 @@
             left 0
             width 100%
             display flex
-            padding 0 1rem
+            padding 0 1rem 1rem 1rem
             flex-direction column
 
-            .directions
+            #autocomplete
+                width 100%
+
+                .autocomplete__wrapper
+                    width 100%
+                    position relative
+                    margin-bottom 2rem
+                    +mq('bp-5')
+                        margin-bottom 4rem
+
+                    input
+                        width 100%
+                        height 2rem
+                        border 1px solid rgba($gray-light, 0.5)
+                        padding 0 0.25rem
+
+                    .autocomplete__menu--visible
+                        display block
+
+                    .autocomplete__menu--hidden
+                        display none    
+
+                    ul
+                        position absolute   
+                        top 100%
+                        left 0 
+                        width 100%
+                        background-color rgba($white, 0.9)
+                        box-shadow 0rem 0.25rem 0.25rem rgba($gray-light, 0.25)
+
+                        li
+                            font-family $national
+                            set-type-size('small', true)
+                            padding 0.25rem
+                            border-bottom 1px solid rgba($gray-light, 0.5)
+
+                            &:hover
+                                background-color $off-white
+
+
+
+            label, .directions
                 font-family $national
                 margin 0 0 0.5rem 0
                 set-type-size('medium', true)
                 font-weight 700
                 //border-top 1px solid rgba($gray-light, 0.5)
                 //padding-top 0.5rem
-
-            .input__search
-                width 100%
-                height 2rem
-                margin-bottom 2rem
-                +mq('bp-5')
-                    margin-bottom 4rem
 
             .checkbox-container
                 width 100%
@@ -62,7 +96,7 @@
                     width 24%
                     display flex
                     flex-direction column
-                    margin-bottom 2rem
+                    margin 0
                     +mq('bp-5')
                         width 48%
 
@@ -88,6 +122,8 @@
                         label   
                             font-family $national
                             padding 0 0 0 0.25rem
+                            font-weight 500
+                            margin 0
                             set-type-size('x-small', true)
                             +mq('bp-3')
                                 set-type-size('small', true)
