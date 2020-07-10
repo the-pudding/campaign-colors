@@ -120,7 +120,7 @@ d3.selection.prototype.puddingColorChart = function init(options) {
             .enter()
             .append('div')
             .attr('class', function(d) {
-              const nameStripped = (d.name).replace(/\s+/g, '').replace('.', '').replace("'", '')
+              const nameStripped = (d.name).replace(/\s+/g, '').replace(/\./g, '').replace(/\'/g, '')
               let partyStripped = null;
               if (d.party == 'Democratic') { partyStripped = d.party }
               else if (d.party == 'Republican') { partyStripped = d.party }

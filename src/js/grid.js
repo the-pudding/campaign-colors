@@ -31,6 +31,9 @@ function scrollSetup() {
 
 // resize
 function handleResize() {
+
+    loadGrid()
+
 	// 1. update height of step elements for breathing room between steps
 	const stepHeight = Math.floor(window.innerHeight * 0.75);
     $step.style('height', stepHeight + 'px');
@@ -137,42 +140,12 @@ function loadGrid() {
     const containerH = $graphic.node().offsetHeight
     const containerArea = containerW*containerH
     const numLogos = data2020.length
+    const areaPerLogo = containerArea / numLogos
+    const logoscale = 0.9
+    const logoH = Math.floor(Math.sqrt(areaPerLogo / 1.777) * logoscale)
+    const logoW = Math.floor(logoH * 1.777 * logoscale)
 
-    const ratio = containerW/containerH
-    const ncols_float = Math.sqrt(numLogos * ratio);
-    const nrows_float = numLogos / ncols_float;
-
-    // Find best option filling the whole height
-    let nrows1 = Math.ceil(nrows_float);
-    let ncols1 = Math.ceil(numLogos / nrows1);
-    while (nrows1 * ratio < ncols1) {
-        nrows1++;
-        ncols1 = Math.ceil(numLogos / nrows1);
-    }
-    let cell_size1 = containerH / nrows1;
-
-    // Find best option filling the whole width
-    let ncols2 = Math.ceil(ncols_float);
-    let nrows2 = Math.ceil(numLogos / ncols2);
-    while (ncols2 < nrows2 * ratio) {
-        ncols2++;
-        nrows2 = Math.ceil(numLogos / ncols2);
-    }
-    let cell_size2 = containerW / ncols2;
-
-    // Find the best values
-    let nrows, ncols, cell_size;
-    if (cell_size1 < cell_size2) {
-        nrows = nrows2;
-        ncols = ncols2;
-        cell_size = cell_size2;
-    } else {
-        nrows = nrows1;
-        ncols = ncols1;
-        cell_size = cell_size1;
-    }
-
-    console.log(nrows, ncols, cell_size)
+    console.log(logoW, logoH)
     
    $gridDiv
         .selectAll('.logoDiv')
@@ -183,7 +156,8 @@ function loadGrid() {
         .append('img')
         .attr('src', d => `assets/images/2020-${d.nameID}.jpg`)
         .attr('alt', d => `${d.name} campaign logo`)
-        .style('width', `${cell_size}px`)
+        .style('width', `${logoW}px`)
+        .style('height', `${logoH}px`)
 }
 
 // fade in grid
@@ -255,7 +229,7 @@ function init(data) {
     handleResize();
     scrollSetup();
 
-    loadGrid();
+    //loadGrid();
     fadeInGrid();
 
     window.addEventListener('resize', handleResize);

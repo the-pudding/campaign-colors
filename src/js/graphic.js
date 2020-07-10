@@ -170,6 +170,7 @@ function setupCandidateSearch() {
   onlyNames = [...new Set(onlyNames)];
 
   autocomplete({
+    defaultValue: '',
     element: document.querySelector('#autocomplete'),
     id: 'my-autocomplete',
     source: onlyNames,
@@ -177,6 +178,7 @@ function setupCandidateSearch() {
     minLength: 3,
     confirmOnBlur: true,
     onConfirm(name) {
+      console.log(name)
       highlightCandidate(name)
     }
   });
@@ -184,7 +186,7 @@ function setupCandidateSearch() {
 
 function highlightCandidate(name) {
 
-  const nameStripped = (name).replace(/\s+/g, '').replace('.', '').replace("'", '')
+  const nameStripped = name.replace(/\s+/g, '').replace(/\./g, '').replace(/\'/g, '')
 
   d3.selectAll('.candidate').transition()
       .duration(200)
@@ -241,6 +243,7 @@ function init() {
 
     // INTERACTIONS
     $candidateNameSpan.on('mouseenter', highlightName)
+    $candidateNameSpan.on('click', highlightName)
     $candidateNameSpan.on('mouseleave', dehighlightName)
 
     // FILTERS & SEARCH
