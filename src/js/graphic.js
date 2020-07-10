@@ -178,27 +178,41 @@ function setupCandidateSearch() {
     minLength: 3,
     confirmOnBlur: true,
     onConfirm(name) {
-      console.log(name)
       highlightCandidate(name)
     }
   });
+
+  const $autocompleteInput = d3.select('.autocomplete__wrapper input')
+  const inputVal = $autocompleteInput.node().value
+
+  $autocompleteInput.on('change', function() {
+    if (inputVal === '') {
+      d3.selectAll(`.candidate`).transition()
+        .duration(200)
+        .ease(d3.easeLinear)
+        .style('opacity', 1)
+        .style('pointer-events', 'auto')
+    }
+  })
 }
 
 function highlightCandidate(name) {
 
-  const nameStripped = name.replace(/\s+/g, '').replace(/\./g, '').replace(/\'/g, '')
+  if (name) {
+    const nameStripped = name.replace(/\s+/g, '').replace(/\./g, '').replace(/\'/g, '')
 
-  d3.selectAll('.candidate').transition()
+    d3.selectAll('.candidate').transition()
+        .duration(200)
+        .ease(d3.easeLinear)
+        .style('opacity', 0.2)
+        .style('pointer-events', 'none')
+    
+    d3.selectAll(`.candidate_${nameStripped}`).transition()
       .duration(200)
       .ease(d3.easeLinear)
-      .style('opacity', 0.2)
-      .style('pointer-events', 'none')
-  
-  d3.selectAll(`.candidate_${nameStripped}`).transition()
-    .duration(200)
-    .ease(d3.easeLinear)
-    .style('opacity', 1)
-    .style('pointer-events', 'auto')
+      .style('opacity', 1)
+      .style('pointer-events', 'auto')
+  }
 }
 
 // CHARTS

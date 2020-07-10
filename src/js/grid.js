@@ -144,8 +144,6 @@ function loadGrid() {
     const logoscale = 0.9
     const logoH = Math.floor(Math.sqrt(areaPerLogo / 1.777) * logoscale)
     const logoW = Math.floor(logoH * 1.777 * logoscale)
-
-    console.log(logoW, logoH)
     
    $gridDiv
         .selectAll('.logoDiv')
@@ -206,8 +204,6 @@ function filterData(data) {
 
     //Filter out Vermin for top
     data2020 = data2020.filter(d => d.nameID !== 'supreme')
-
-    console.log(data2020.length)
 }
 
 function getLastName(name) {
