@@ -38,15 +38,45 @@
             padding 0 1rem 1rem 1rem
             flex-direction column
 
-            #autocomplete
+            .search-wrapper
                 width 100%
+                display flex
+                flex-direction row  
+                align-items center
+                justify-content space-between
+                +mq('bp-5')
+                    flex-direction column
+                    justify-content flex-start
+                    align-items flex-start
+
+                .reset
+                    width 3rem  
+                    font-family $national
+                    color $gray-dark
+                    set-type-size('small', true)
+                    margin -1rem 0 0 0
+                    text-align right
+                    font-style italic
+                    +mq('bp-5')
+                        width auto
+                        text-align left
+                        margin 0 0 4rem 0
+
+                    &:hover
+                        color $off-black
+                        font-weight 700
+
+            #autocomplete
+                width calc(100% - 3rem)
+                +mq('bp-5')
+                    width 100%
 
                 .autocomplete__wrapper
                     width 100%
                     position relative
                     margin-bottom 1rem
                     +mq('bp-5')
-                        margin-bottom 4rem
+                        margin-bottom 0.25rem
 
                     input
                         width 100%

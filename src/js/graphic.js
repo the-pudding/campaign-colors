@@ -27,8 +27,32 @@ const $checkbox_race_w = d3.selectAll('#race-w')
 const $checkbox_race_nw = d3.selectAll('#race-nw')
 const $checkbox_gender_m = d3.selectAll('#gender-m')
 const $checkbox_gender_nm = d3.selectAll('#gender-nm')
+const $reset = d3.select('.reset')
+const $inputText = d3.select('#my-autocomplete')
 
 // INTERACTIONS
+function resetChart() {
+
+  const $autocompleteInput = d3.select('.autocomplete__wrapper input')
+  $autocompleteInput.node().value = ''
+
+  d3.selectAll('.candidate').transition()
+      .duration(200)
+      .ease(d3.easeLinear)
+      .style('opacity', 1)
+      .style('pointer-events', 'auto')
+  
+  if (!$checkbox_party_d.node().checked) { $checkbox_party_d.node().click() }
+  if (!$checkbox_party_r.node().checked) { $checkbox_party_r.node().click() }
+  if (!$checkbox_party_t.node().checked) { $checkbox_party_t.node().click() }
+  if (!$checkbox_color_rwb.node().checked) { $checkbox_color_rwb.node().click() }
+  if (!$checkbox_color_nrwb.node().checked) { $checkbox_color_nrwb.node().click() }
+  if (!$checkbox_race_w.node().checked) { $checkbox_race_w.node().click() }
+  if (!$checkbox_race_nw.node().checked) { $checkbox_race_nw.node().click() }
+  if (!$checkbox_gender_m.node().checked) { $checkbox_gender_m.node().click() }
+  if (!$checkbox_gender_nm.node().checked) { $checkbox_gender_nm.node().click() }
+}
+
 function highlightName() {
   const $name = d3.select(this).attr('id').split('-')[0]
   const $parent = d3.select(this.parentNode).attr('id').split('-')[0]
@@ -181,19 +205,6 @@ function setupCandidateSearch() {
       highlightCandidate(name)
     }
   });
-
-  const $autocompleteInput = d3.select('.autocomplete__wrapper input')
-  const inputVal = $autocompleteInput.node().value
-
-  $autocompleteInput.on('change', function() {
-    if (inputVal === '') {
-      d3.selectAll(`.candidate`).transition()
-        .duration(200)
-        .ease(d3.easeLinear)
-        .style('opacity', 1)
-        .style('pointer-events', 'auto')
-    }
-  })
 }
 
 function highlightCandidate(name) {
@@ -263,6 +274,7 @@ function init() {
     // FILTERS & SEARCH
     setupCandidateSearch();
     $allCheckboxes.on('change', checkCheckboxes)
+    $reset.on('click', resetChart)
 
 	}).catch(console.error);
 }

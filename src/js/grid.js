@@ -141,7 +141,7 @@ function loadGrid() {
     const containerArea = containerW*containerH
     const numLogos = data2020.length
     const areaPerLogo = containerArea / numLogos
-    const logoscale = 0.9
+    const logoscale = 0.95
     const logoH = Math.floor(Math.sqrt(areaPerLogo / 1.777) * logoscale)
     const logoW = Math.floor(logoH * 1.777 * logoscale)
     
@@ -183,6 +183,7 @@ function highlightName() {
         .duration(500)
         .ease(d3.easeLinear)
         .style('opacity', 1)
+    $logo.classed('is-highlighted', true)    
 }
 
 function dehighlightName() {
@@ -191,6 +192,7 @@ function dehighlightName() {
          .duration(200)
          .ease(d3.easeLinear)
          .style('opacity', 1)
+    $logoDivs.classed('is-highlighted', false)        
 }
 
 // DATA
