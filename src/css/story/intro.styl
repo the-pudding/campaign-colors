@@ -1,3 +1,6 @@
+body
+	background-color $off-white
+
 .intro
 	margin 0 auto 3rem auto
 	padding 3rem 0
@@ -52,7 +55,7 @@
 				opacity 0.5
 
 				p
-					background-color rgba($white, 0.98)	
+					background-color rgba($off-white, 0.98)	
 					padding 1rem
 					box-shadow 0.25rem 0.25rem 2rem rgba($off-black, 0.125)	
 					line-height 1.75
@@ -65,9 +68,11 @@
 					font-family $national
 					font-weight 700
 					white-space nowrap
+					background-color $white
 
 					&:hover
-						background-color $off-white		
+						background-color $gray-light
+						border 1px solid $gray-dark		
 
 			#step-0
 				p

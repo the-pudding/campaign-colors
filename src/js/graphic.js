@@ -70,6 +70,7 @@ function highlightName() {
        .ease(d3.easeLinear)
        .style('opacity', 1)
        .style('filter', 'none')
+  $logo.classed('is-highlighted', true)      
 }
 
 function dehighlightName() {
@@ -79,6 +80,7 @@ function dehighlightName() {
         .ease(d3.easeLinear)
         .style('opacity', 1)
         .style('filter', 'none')
+    $logoDivs.classed('is-highlighted', false)      
 }
 
 // FILTERS

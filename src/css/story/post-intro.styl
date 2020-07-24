@@ -9,9 +9,11 @@
             font-family $national
             font-weight 700
             white-space nowrap
+            background-color $white
 
             &:hover
-                background-color $off-white
+                border 1px solid $gray-dark
+                background-color $gray-light
 
 
 .year-chart-title
@@ -71,7 +73,7 @@
                 top 0
                 left 0
                 width 100%
-                //background-color $off-white
+                background-color $white
                 border 1px solid $off-black
 
             .bar-rwbn
@@ -89,14 +91,6 @@
                     set-type-size('small', true)
                     font-weight 700
 
-.header-span
-    font-family $serif-hed
-    set-type-size('x-large', true)
-
-    span
-        font-weight 700
-        font-family $national
-
 .miniGrid
     max-width 60rem
     display flex
@@ -112,10 +106,11 @@
         width 100%
         font-family $serif-hed
         set-type-size('x-large', true)
-        margin 0 0 1rem 0
         width 100%
         border-top 1px solid rgba($gray, 0.5)
         padding-top 0.5rem
+        max-width 50rem
+        margin 0 auto 1.5rem auto
 
         span
             font-weight 700
@@ -123,13 +118,14 @@
 
     .chartGrid
         width 100%  
+        max-width 50rem
         display flex
         flex-direction row 
         align-items flex-start 
-        margin-bottom 2rem
+        margin 0 auto 2rem auto
         padding 0
         +mq('bp-4')
-          margin-bottom 3rem 
+          margin-bottom 0 auto 3rem auto
 
         .colorGroup
             display flex
@@ -151,6 +147,10 @@
                 border 1px solid $off-black
                 margin 0.125rem
                 height auto
+
+                &.is-highlighted
+                    outline 0.125rem solid #F9CF3A
+                    outline-offset -0.125rem
 
                 img
                     width 100%

@@ -77,7 +77,7 @@ function init(data, demographic) {
     let $demoContainer = d3.select(`#${demographic}`)
     let $demoSen = d3.select(`#${demographic}-sen`)
 
-    $demoSen.html(`<span>...${percentCands}%</span> of ${demoHed}`)
+    $demoSen.html(`<span>${percentCands}% of ${demoHed}</span> used non-RWB colors compared to only 21% of White male candidates.`)
 
     let $colorContainer = $demoContainer.selectAll('.colorGroup')
         .data(demographicDataNest)
