@@ -53,40 +53,53 @@ body
 					transform translate(-50%, 0)
 					+mq('bp-4')
 						width 90%
+						max-width 70rem
 
 
 				.intro__text
+					z-index set-index('overlay')
 					position relative
 					bottom 2rem
 					left 0
 					width 100%
-					max-width 40rem
+					max-width $column-width
 					margin 0 auto
-					margin-top -20rem
+					margin-top -20%
 					display flex
 					flex-direction column
-					//align-items center
-					//justify-content center
 
 					h1
-						font-family $knockout72
+						font-family $national
 						set-type-size('xxx-large', true)
 						background-color $cc-blue
 						padding 1rem
+						font-weight 700
 						color $off-white
-						max-width 30rem
-						margin-top 10rem
-						//text-transform uppercase
+						max-width 35rem
+						margin 10rem auto 0 auto
+						text-align center	
 
 					p
-						font-family $knockout32	
-						set-type-size('large', true)
-						//text-transform uppercase
+						font-family $national
+						set-type-size('medium', true)
 						background-color $cc-red
 						padding 0.25rem 1rem
 						color $cc-navy
 						max-width 10rem
-						margin -1rem 0 0 18rem
+						margin -1rem auto 0 auto
+						text-align center
+						font-weight 700
+
+						a
+							color $cc-navy	
+							border-bottom 1px solid $cc-navy
+							cursor pointer
+
+							&:hover
+								color $off-white
+								border-bottom 1px solid $off-white
+
+
 
 		.scroll__text
 			position relative
@@ -95,6 +108,7 @@ body
 			width 100%
 			padding 0 2rem
 			margin 1rem auto
+			pointer-events none
 			+mq('bp-5')
 				padding 0 1rem
 
@@ -112,50 +126,22 @@ body
 					line-height 1.75
 
 				.intro-hover
-					border 1px solid $off-black
+					border 2px solid $gray-light
 					box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
 					//border-radius 0.25rem
-					padding 0.25rem 0.5rem	
-					font-family $knockout72
-					//font-weight 700
+					padding 0.125rem 0.25rem	
+					font-family $national
+					font-weight 700
 					white-space nowrap
 					//color $off-white
 					background-color $white
-					//set-type-size('large', true)
-					text-transform uppercase
 
 					&:hover
-						background-color $gray-light
-						border 1px solid $off-black		
+						//background-color rgba($gray-light, 0.5)
+						border 2px solid $cc-gold	
 
 			#step-0
 				visibility hidden
-
-				p
-					font-family $serif-display
-					set-type-size('xx-large', true)
-					text-align center
-					font-weight 700
-					+mq('bp-3')
-						set-type-size('xxx-large', true)
-					+mq('bp-4')
-						set-type-size('xxxx-large', true)
-
-					.byline
-						font-family $national
-						font-weight 500
-						set-type-size('root', true)
-
-					.arrow 
-						background-image url('assets/images/arrow-down.png')	
-						background-repeat no-repeat
-						background-position 50% 50%
-						background-size 35px 35px	
-						width 35px
-						height 35px
-						display inline-block
-						margin-top 2rem	
-						animation updown 1s infinite  alternate;
 
 @keyframes updown {
 	0% { transform: translateY(0) }

@@ -65,6 +65,8 @@ function renderStep(index) {
     const $RWB_Y = d3.selectAll('.RWB-Y')
 
     if (index === 0) {
+        $text.style('pointer-events', 'none')
+
         $introSVG.transition()
             .duration(100)
             .ease(d3.easeLinear)
@@ -78,6 +80,8 @@ function renderStep(index) {
     }
 
     if (index === 1) {
+        $text.style('pointer-events', 'auto')
+
         $introSVG.transition()
             .duration(200)
             .ease(d3.easeLinear)
@@ -224,6 +228,8 @@ function bounceArrow() {
         .duration(5000)
         .ease(d3.easeBounce)
         .style('transform', 'translateY(30px)')
+    
+    arrow.classed('bounce', true)
 }
 function popItems(itemType) {
     const items = d3.selectAll(itemType)

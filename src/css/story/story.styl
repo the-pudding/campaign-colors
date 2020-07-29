@@ -27,4 +27,12 @@
     g path
         fill $cc-red
         transform scale(0) 
-        transform-origin center                     
+        transform-origin center 
+
+.bounce
+    animation updown 1s infinite  alternate
+
+@keyframes updown {
+	0% { transform: translateY(0) }
+	100% { transform: translateY(-0.75rem) }
+}	    
