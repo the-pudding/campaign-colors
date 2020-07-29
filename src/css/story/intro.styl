@@ -50,10 +50,11 @@ body
 					position relative
 					top 0
 					left 50%
-					transform translate(-50%, 0)
+					transform translate(-50%, 20%)
 					+mq('bp-4')
 						width 90%
 						max-width 70rem
+						transform translate(-50%, 0)
 
 
 				.intro__text
@@ -67,21 +68,24 @@ body
 					margin-top -20%
 					display flex
 					flex-direction column
+					padding 0 1rem
 
 					h1
 						font-family $national
-						set-type-size('xxx-large', true)
+						set-type-size('x-large', true)
 						background-color $cc-blue
 						padding 1rem
 						font-weight 700
 						color $off-white
 						max-width 35rem
 						margin 10rem auto 0 auto
-						text-align center	
+						text-align center
+						+mq('bp-4')
+							set-type-size('xxx-large', true)		
 
 					p
 						font-family $national
-						set-type-size('medium', true)
+						set-type-size('root', true)
 						background-color $cc-red
 						padding 0.25rem 1rem
 						color $cc-navy
@@ -89,6 +93,8 @@ body
 						margin -1rem auto 0 auto
 						text-align center
 						font-weight 700
+						+mq('bp-4')
+							set-type-size('medium', true)
 
 						a
 							color $cc-navy	

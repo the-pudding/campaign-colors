@@ -1,5 +1,6 @@
 // initialize scrollama
-const scrollama = require("scrollama");
+import "intersection-observer";
+import scrollama from "scrollama";
 
 // candidate data
 let data2020 = [];
@@ -261,7 +262,6 @@ function drawInPaths(pathType) {
 }
 
 function animateTitle() {
-    console.log('animating')
     drawInPaths('#strokes path')
     drawInPaths('#line-strokes path')
     popItems('#stars polygon')
@@ -289,8 +289,6 @@ function highlightName() {
 function dehighlightName() {
     const $name = d3.select(this).attr('id').split('-')[0]
     const $logoDivs = d3.selectAll('.logoDiv')
-
-    console.log($name)
 
     if ($name === 'bennet' || $name === 'bullock' || $name === 'ryan' || $name === 'biden' || $name === 'trump') {
        d3.selectAll('.RWB-Y').transition()
