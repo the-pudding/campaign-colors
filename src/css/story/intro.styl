@@ -13,12 +13,18 @@ body
 		align-content center
 		justify-content center
 		height 100vh
+		z-index 900
 
 		.logoDiv
 			display flex
 			opacity 0
 			box-sizing border-box
 			outline none
+			filter grayscale(100%)
+
+			&.is-intext
+				outline 0.25rem solid #F9CF3A
+				outline-offset -0.25rem
 
 			&.is-highlighted
 				outline 0.25rem solid #F9CF3A
@@ -33,14 +39,59 @@ body
 			right 0
 			transform translate3d(0, 0, 0)
 
-			h1
-				visibility hidden
+			.intro__svg
+				width 100%
 				position absolute
+				z-index set-index('overlay')
+				height 100vh
+
+				svg
+					width 100%
+					position relative
+					top 0
+					left 50%
+					transform translate(-50%, 0)
+					+mq('bp-4')
+						width 90%
+
+
+				.intro__text
+					position relative
+					bottom 2rem
+					left 0
+					width 100%
+					max-width 40rem
+					margin 0 auto
+					margin-top -20rem
+					display flex
+					flex-direction column
+					//align-items center
+					//justify-content center
+
+					h1
+						font-family $knockout72
+						set-type-size('xxx-large', true)
+						background-color $cc-blue
+						padding 1rem
+						color $off-white
+						max-width 30rem
+						margin-top 10rem
+						//text-transform uppercase
+
+					p
+						font-family $knockout32	
+						set-type-size('large', true)
+						//text-transform uppercase
+						background-color $cc-red
+						padding 0.25rem 1rem
+						color $cc-navy
+						max-width 10rem
+						margin -1rem 0 0 18rem
 
 		.scroll__text
 			position relative
 			top 0
-			max-width 30rem
+			max-width 35rem
 			width 100%
 			padding 0 2rem
 			margin 1rem auto
@@ -55,26 +106,31 @@ body
 				opacity 0.5
 
 				p
-					background-color rgba($off-white, 0.98)	
+					background-color rgba($white, 0.98)	
 					padding 1rem
 					box-shadow 0.25rem 0.25rem 2rem rgba($off-black, 0.125)	
 					line-height 1.75
 
 				.intro-hover
-					border 1px solid $gray
+					border 1px solid $off-black
 					box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
-					border-radius 0.25rem
-					padding 0.125rem 0.5rem	
-					font-family $national
-					font-weight 700
+					//border-radius 0.25rem
+					padding 0.25rem 0.5rem	
+					font-family $knockout72
+					//font-weight 700
 					white-space nowrap
+					//color $off-white
 					background-color $white
+					//set-type-size('large', true)
+					text-transform uppercase
 
 					&:hover
 						background-color $gray-light
-						border 1px solid $gray-dark		
+						border 1px solid $off-black		
 
 			#step-0
+				visibility hidden
+
 				p
 					font-family $serif-display
 					set-type-size('xx-large', true)

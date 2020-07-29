@@ -13,6 +13,7 @@ const $text = $container.select('.scroll__text');
 const $step = $text.selectAll('.step');
 const $step0 = d3.select('#step-0')
 const $introNameSpan = d3.selectAll('.intro-hover')
+const $introSVG = d3.selectAll('.intro__svg')
 
 // SCROLLAMA
 // setup
@@ -63,12 +64,34 @@ function renderStep(index) {
     const $RWB_N = d3.selectAll('.RWB-N')
     const $RWB_Y = d3.selectAll('.RWB-Y')
 
-    if (index === 1) {
+    if (index === 0) {
+        $introSVG.transition()
+            .duration(100)
+            .ease(d3.easeLinear)
+            .style('opacity', 1)
+
         $campaignLogos.transition()
             .duration(200)
             .ease(d3.easeLinear)
+            .style('opacity', 0.2)
+            .style('filter', 'grayscale(100%)')
+    }
+
+    if (index === 1) {
+        $introSVG.transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 0)
+
+        $campaignLogos.transition()
+            .duration(1500)
+            .delay((d, i) => i * 50)
+            .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
+        
+        d3.selectAll('.logoDiv-bennet, .logoDiv-bullock, .logoDiv-ryan')
+            .classed('is-intext', false)
     }
     if (index === 2) {
         $RWB_N.transition()
@@ -81,7 +104,13 @@ function renderStep(index) {
             .duration(200)
             .ease(d3.easeLinear)
             .style('opacity', 1)
-            .style('filter', 'none')    
+            .style('filter', 'none') 
+        
+        d3.selectAll('.logoDiv-biden, .logoDiv-trump')
+            .classed('is-intext', false)
+        
+        d3.selectAll('.logoDiv-bennet, .logoDiv-bullock, .logoDiv-ryan')
+            .classed('is-intext', true)
     }
     if (index === 3) {
         $RWB_N.transition()
@@ -95,6 +124,12 @@ function renderStep(index) {
             .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
+        
+        d3.selectAll('.logoDiv-biden, .logoDiv-trump')
+            .classed('is-intext', true)
+        
+        d3.selectAll('.logoDiv-bennet, .logoDiv-bullock, .logoDiv-ryan')
+            .classed('is-intext', false)
     }
     if (index === 4) {
         $RWB_N.transition()
@@ -108,6 +143,12 @@ function renderStep(index) {
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
             .style('filter', 'grayscale(100%)')
+        
+        d3.selectAll('.logoDiv-biden, .logoDiv-trump')
+            .classed('is-intext', false)
+        
+        d3.selectAll('.logoDiv-harris, .logoDiv-orourke, .logoDiv-warren')
+            .classed('is-intext', false)
     }
     if (index === 5) {
         $RWB_N.transition()
@@ -121,6 +162,9 @@ function renderStep(index) {
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
             .style('filter', 'grayscale(100%)')
+        
+        d3.selectAll('.logoDiv-harris, .logoDiv-orourke, .logoDiv-warren')
+            .classed('is-intext', true)
     }
 
     if (index === 6) {
@@ -129,6 +173,9 @@ function renderStep(index) {
             .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
+        
+        d3.selectAll('.logoDiv-harris, .logoDiv-orourke, .logoDiv-warren')
+            .classed('is-intext', false)
     }
 
 }
@@ -166,7 +213,54 @@ function fadeInGrid() {
         .duration(1500)
         .delay((d, i) => i * 100)
         .ease(d3.easeLinear)
-        .style('opacity', 1)
+        .style('opacity', 0.125)
+}
+
+// title animations
+function bounceArrow() {
+    const arrow = d3.selectAll('#lines polygon')
+
+    arrow.transition()
+        .duration(5000)
+        .ease(d3.easeBounce)
+        .style('transform', 'translateY(30px)')
+}
+function popItems(itemType) {
+    const items = d3.selectAll(itemType)
+
+    items.transition()
+        .duration(5000)
+        .delay((d, i) => i * 100)
+        .ease(d3.easeBounce)
+        .style('transform', 'scale(1)')
+}
+
+function tweenDashIn() {
+    const l = this.getTotalLength()
+	const i = d3.interpolateString('0,' + l, l + ',' + l);
+	return function(t) { return i(t); };
+}
+
+function drawInPaths(pathType) {
+    const letterPaths = d3.selectAll(pathType)
+    const lineNodes = letterPaths._groups[0]
+
+    lineNodes.forEach.call(lineNodes, function(path) {
+        letterPaths.transition()
+            .delay((d) => Math.random() * Math.random(500))
+            .duration(5000)
+            .ease(d3.easeLinear)
+            .attrTween('stroke-dasharray', tweenDashIn)   
+    })
+}
+
+function animateTitle() {
+    console.log('animating')
+    drawInPaths('#strokes path')
+    drawInPaths('#line-strokes path')
+    popItems('#stars polygon')
+    popItems('#years g path')
+    bounceArrow()
 }
 
 // INTERACTIONS
@@ -187,11 +281,35 @@ function highlightName() {
 }
 
 function dehighlightName() {
+    const $name = d3.select(this).attr('id').split('-')[0]
     const $logoDivs = d3.selectAll('.logoDiv')
-    $logoDivs.transition()
-         .duration(200)
-         .ease(d3.easeLinear)
-         .style('opacity', 1)
+
+    console.log($name)
+
+    if ($name === 'bennet' || $name === 'bullock' || $name === 'ryan' || $name === 'biden' || $name === 'trump') {
+       d3.selectAll('.RWB-Y').transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 1) 
+       
+        d3.selectAll('.RWB-N').transition()
+            .duration(200)
+            .ease(d3.easeLinear)
+            .style('opacity', 0.2) 
+    }
+
+    if ($name === 'harris' || $name === 'orourke' || $name === 'warren') {
+        d3.selectAll('.RWB-Y').transition()
+             .duration(200)
+             .ease(d3.easeLinear)
+             .style('opacity', 0.2) 
+        
+         d3.selectAll('.RWB-N').transition()
+             .duration(200)
+             .ease(d3.easeLinear)
+             .style('opacity', 1) 
+     }
+
     $logoDivs.classed('is-highlighted', false)        
 }
 
@@ -229,6 +347,8 @@ function init(data) {
 
     //loadGrid();
     fadeInGrid();
+    //invisibleStroke(); 
+    animateTitle(); 
 
     window.addEventListener('resize', handleResize);
 

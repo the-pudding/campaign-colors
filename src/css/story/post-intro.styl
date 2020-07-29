@@ -2,26 +2,29 @@
    .prose
 
         .cand-hover
-            border 1px solid $gray
+            border 1px solid $off-black
             box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
-            border-radius 0.25rem
-            padding 0.125rem 0.5rem	
-            font-family $national
-            font-weight 700
+            //border-radius 0.25rem
+            padding 0.25rem 0.5rem	
+            font-family $knockout72
+            text-transform uppercase
+            //font-weight 700
             white-space nowrap
             background-color $white
 
             &:hover
-                border 1px solid $gray-dark
+                //border 1px solid #F9CF3A
                 background-color $gray-light
+                //color $off-white
 
 
 .year-chart-title
-    font-family $national
-    font-weight 700
+    font-family $knockout72
+    //font-weight 700
     margin 0 auto
     padding 3rem 1rem 0rem 1rem
     set-type-size('medium', true)
+    text-transform uppercase
 
 .year-chart-labels
     max-width $column-width
@@ -32,7 +35,7 @@
     padding 1rem 1rem 0 3.5rem
 
     p
-        font-family $national
+        font-family $knockout32
         margin 0
         padding 0
         set-type-size('small', true)
@@ -53,12 +56,13 @@
         align-items center
 
         .year-label
-            font-family $national
-            margin 0
+            font-family $knockout32
+            margin 0 0.5rem 0 0
             padding 0
             set-type-size('small', true)
             color $off-black
-            width 2.5rem
+            width 2.25rem
+            text-align right
 
         .bar-container
             width calc(100% - 2.5rem)
@@ -66,6 +70,8 @@
             position relative
             align-items center
             display flex
+            box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
+            margin-bottom 0.125rem
 
             .bar-rwb
                 height 1.5rem
@@ -84,12 +90,12 @@
                 background-color $off-black 
 
                 p
-                    font-family $national
+                    font-family $knockout72
                     position absolute
                     margin 0
                     padding 0 0 0 0.25rem
                     set-type-size('small', true)
-                    font-weight 700
+                    //font-weight 700
 
 .miniGrid
     max-width 60rem
@@ -100,21 +106,39 @@
     padding 0 1rem
     
     .prose
-        padding 1rem 0    
+        padding 1rem 0  
+
+    .seperator
+        width 100%
+        padding-top 0.5rem
+        max-width 50rem
+        margin 1.5rem auto 0.5rem auto
+        display flex
+        flex-direction row
+
+        .left-line, .right-line
+            border-top 1px solid rgba($gray, 0.5)
+            width 45%
+
+        svg
+            width 25px
+            height 25px 
+            margin -0.75rem 1rem 0 1rem   
+
 
     h5
         width 100%
-        font-family $serif-hed
-        set-type-size('x-large', true)
-        width 100%
-        border-top 1px solid rgba($gray, 0.5)
-        padding-top 0.5rem
+        font-family $knockout32
+        set-type-size('xx-large', true)
+        //padding-top 0.5rem
         max-width 50rem
+        line-height 1.25em
         margin 0 auto 1.5rem auto
+        text-transform uppercase
 
         span
-            font-weight 700
-            font-family $national
+            //font-weight 700
+            font-family $knockout72
 
     .chartGrid
         width 100%  
@@ -137,7 +161,7 @@
 
             p
                 width 100%
-                font-family $national
+                font-family $knockout32
                 set-type-size('small', true)
                 color $gray-dark
                 margin 0

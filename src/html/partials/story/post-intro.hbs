@@ -12,6 +12,11 @@
     <p class='prose'>{{{value}}}</p>
     {{/each}}
     <div class='miniGrid'>
+        <div class='seperator'>
+            <div class='left-line'></div>
+            <img inline src='campaign-star.svg'>
+            <div class='left-line'></div>
+        </div>
         <h5 id='allMin-sen'>All minority candidates</h5>
         <div class='chartGrid' id='allMin'></div>
         {{#each copy.minCands}}
@@ -19,6 +24,11 @@
         {{/each}}
     </div>
     <div class='miniGrid'>
+        <div class='seperator'>
+            <div class='left-line'></div>
+            <img inline src='campaign-star.svg'>
+            <div class='left-line'></div>
+        </div>
         <h5 id='race-sen'>Non-white candidates</h5>
         <div class='chartGrid' id='race'></div>
         {{#each copy.whiteCands}}
@@ -26,6 +36,11 @@
         {{/each}}
     </div>
     <div class='miniGrid'>
+        <div class='seperator'>
+            <div class='left-line'></div>
+            <img inline src='campaign-star.svg'>
+            <div class='left-line'></div>
+        </div>
         <h5 id='gender-sen'>Non-male candidates</h5>
         <div class='chartGrid' id='gender'></div>
         {{#each copy.maleCands}}
@@ -33,6 +48,11 @@
         {{/each}}
     </div>
     <div class='miniGrid'>
+        <div class='seperator'>
+            <div class='left-line'></div>
+            <img inline src='campaign-star.svg'>
+            <div class='left-line'></div>
+        </div>
         <h5 id='minWomen-sen'>Non-white &amp; non-male candidates</h5>
         <div class='chartGrid' id='minWomen'></div>
         {{#each copy.minWomenCands}}

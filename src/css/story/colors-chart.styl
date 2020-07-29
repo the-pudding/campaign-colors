@@ -51,7 +51,7 @@
 
                 .reset
                     width 3rem  
-                    font-family $national
+                    font-family $knockout32
                     color $gray-dark
                     set-type-size('small', true)
                     margin -1rem 0 0 0
@@ -101,7 +101,7 @@
                         box-shadow 0rem 0.25rem 0.25rem rgba($gray-light, 0.25)
 
                         li
-                            font-family $national
+                            font-family $knockout32
                             set-type-size('small', true)
                             padding 0.25rem
                             border-bottom 1px solid rgba($gray-light, 0.5)
@@ -112,10 +112,10 @@
 
 
             label, .directions
-                font-family $national
+                font-family $knockout72
+                text-transform uppercase
                 margin 0
                 set-type-size('medium', true)
-                font-weight 700
                 +mq('bp-3')
                   margin 0 0 0.5rem 0  
 
@@ -133,11 +133,12 @@
                     margin 0
                     +mq('bp-5')
                         width 48%
+                        margin 0 0 2rem 0
 
                     p
-                        font-family $national
+                        font-family $knockout32
+                        text-transform uppercase
                         set-type-size('small', true) 
-                        font-weight 700
                         margin 0
                         +mq('bp-3')
                             set-type-size('root', true)
@@ -159,10 +160,11 @@
                                 height 1rem 
 
                         label   
-                            font-family $national
+                            font-family $knockout32
                             padding 0 0 0 0.25rem
                             font-weight 500
                             margin 0
+                            text-transform none
                             set-type-size('x-small', true)
                             +mq('bp-3')
                                 set-type-size('small', true)
@@ -171,18 +173,18 @@
         .overlay-inset
             opacity 0
             position absolute
-            top 4rem
+            top 3rem
             left 0
-            background-color rgba($off-white, 0.98)
+            background-color rgba($white, 0.98)
             display none
             width 100%
-            padding 0 1rem
+            padding 1rem
             height auto
             box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
             pointer-events none
             +mq('bp-5')
-              height 100vh 
-              box-shadow none 
+              height 50vh 
+              box-shadow 0.25rem 0.25rem 0.25rem rgba($gray-light, 0.25)
 
             &.is-visible
                 opacity 1
@@ -190,11 +192,12 @@
 
             h5
                 set-type-size('xx-large', true)
-                font-family $tiempos-hed   
+                font-family $knockout72
+                text-transform uppercase  
                 margin 0 
 
             p
-                font-family $national
+                font-family $knockout32
                 color $gray-dark    
                 margin 0
 
@@ -202,6 +205,7 @@
                 width 100%
                 margin 1rem auto
                 max-width 700px
+                border 1px solid $off-black
                 +mq('bp-3')
                     width 75%
                 +mq('bp-5')
@@ -243,7 +247,7 @@
                     position absolute
                     margin -0.35rem 0 0 -2.5rem
                     padding 0
-                    font-family $national
+                    font-family $knockout32
                     color $gray-dark
                     set-type-size('small', true)
 

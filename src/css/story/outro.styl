@@ -1,16 +1,28 @@
 .outro
-    margin-bottom 5rem
+    margin 3.5rem 0 5rem 0
     padding 0 1rem
 
     .prose
         padding 1rem 0
 
-    .divider
-        max-width 60rem
-        margin 0 auto 1.5rem auto
-        border-top 1px solid rgba($gray, 0.5)
+    .seperator
+        width 100%
+        padding-top 0.5rem
+        max-width 50rem
+        margin 0 auto 0.5rem auto
+        display flex
+        flex-direction row
+
+        .left-line, .right-line
+            border-top 1px solid rgba($gray, 0.5)
+            width 45%
+
+        svg
+            width 25px
+            height 25px 
+            margin -0.75rem 1rem 0 1rem  
 
     .bolded
-        font-weight 700
-        font-family $national    
-        set-type-size('x-large', true)
+        font-family $knockout72   
+        set-type-size('medium', true)
+        text-transform uppercase
