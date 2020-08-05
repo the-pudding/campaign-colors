@@ -1,5 +1,7 @@
 let demographicData = []
 let demographicDataNest = []
+let whiteMaleData = []
+let whiteMaleDataNest = []
 let demoHed = null
 
 function getLastName(name) {
@@ -20,6 +22,11 @@ function getLastName(name) {
 }
 
 function filterData(data, demographic) {
+
+    whiteMaleData = data.filter(d => d.whiteMale == 'TRUE')
+    whiteMaleDataNest = d3.nest()
+        .key(d => d.RWB).sortKeys(d3.ascending)
+        .entries(whiteMaleData)
 
     if (demographic == 'allMin') {
         demographicData = data.filter(d => d.whiteMale == 'FALSE')
@@ -74,10 +81,13 @@ function init(data, demographic) {
     const totalCands = demographicDataNest[0].values.length + demographicDataNest[1].values.length
     const percentCands = Math.round(demographicDataNest[0].values.length/totalCands*100)
 
+    const whiteMaleCands = whiteMaleDataNest[0].values.length + whiteMaleDataNest[1].values.length
+    const percentWhiteMaleCands = Math.round(whiteMaleDataNest[0].values.length/whiteMaleCands*100)
+
     let $demoContainer = d3.select(`#${demographic}`)
     let $demoSen = d3.select(`#${demographic}-sen`)
 
-    $demoSen.html(`<span>${percentCands}% of ${demoHed}</span> used non-RWB colors compared to only 21% of White male candidates.`)
+    $demoSen.html(`<span>${percentCands}% of ${demoHed}</span> used non-RWB colors compared to only ${percentWhiteMaleCands}% of White male candidates.`)
 
     let $colorContainer = $demoContainer.selectAll('.colorGroup')
         .data(demographicDataNest)
