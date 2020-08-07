@@ -20,7 +20,7 @@ body
 			opacity 0.125
 			box-sizing border-box
 			outline none
-			filter grayscale(100%)
+			filter none
 
 			&.is-intext
 				outline 0.25rem solid #F9CF3A
@@ -51,6 +51,7 @@ body
 					top 0
 					left 50%
 					transform translate(-50%, 20%)
+					max-height 75vh
 					+mq('bp-4')
 						width 90%
 						max-width 70rem
@@ -65,7 +66,7 @@ body
 					width 100%
 					max-width $column-width
 					margin 0 auto
-					margin-top -20%
+					margin-top -10%
 					display flex
 					flex-direction column
 					padding 0 1rem

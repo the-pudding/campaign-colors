@@ -208,6 +208,7 @@ function loadGrid() {
         .attr('alt', d => `${d.name} campaign logo`)
         .style('width', `${logoW}px`)
         .style('height', `${logoH}px`)
+        //.style('filter', 'grayscale(100%)')
 }
 
 // fade in grid

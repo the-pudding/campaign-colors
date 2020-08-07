@@ -19,13 +19,15 @@ header
 			width 100%
 	
 header.is-sticky
-	position fixed
+	position relative
 	transform translate3d(0,0,0)
 	background-color $off-white
 	box-shadow 0 0 7px 1px $gray-light
 	height 3rem
 	display flex
 	align-items center
+	+mq('bp-5')
+		position fixed
 	
 	a.logo
 		margin 0 auto

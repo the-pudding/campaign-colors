@@ -199,8 +199,8 @@ d3.selection.prototype.puddingColorChart = function init(options) {
           const barHeight = Math.floor((height)/totalCandidates*2)
           const colorBlocks = d3.selectAll('.color-block')
           
-          d3.selectAll('.color-block').style('height', `8px`)
-          d3.selectAll('.candidate').style('height', `10px`)
+          //d3.selectAll('.color-block').style('height', `8px`)
+          //d3.selectAll('.candidate').style('height', `10px`)
 
           return Chart;
         },
