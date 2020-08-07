@@ -48,7 +48,7 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
-        demoHed = 'non-White candidates'
+        demoHed = 'candidates of color'
     }
     if (demographic == 'gender') {
         demographicData = data.filter(d => d.male == 'N')
@@ -59,7 +59,7 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
-        demoHed = 'non-male candidates'    
+        demoHed = 'female candidates'    
     }
 
     if (demographic == 'minWomen') {
@@ -71,7 +71,7 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
-        demoHed = 'non-White & non-male candidates'
+        demoHed = 'women of color candidates'
     }
 }
 

@@ -69,14 +69,14 @@ function renderStep(index) {
         $text.style('pointer-events', 'none')
 
         $introSVG.transition()
-            .duration(100)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 1)
 
         $campaignLogos.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
-            .style('opacity', 0.2)
+            .style('opacity', 0.125)
             .style('filter', 'grayscale(100%)')
     }
 
@@ -84,7 +84,7 @@ function renderStep(index) {
         $text.style('pointer-events', 'auto')
 
         $introSVG.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 0)
 
@@ -119,13 +119,13 @@ function renderStep(index) {
     }
     if (index === 3) {
         $RWB_N.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
             .style('filter', 'grayscale(100%)')
         
         $RWB_Y.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
@@ -138,13 +138,13 @@ function renderStep(index) {
     }
     if (index === 4) {
         $RWB_N.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
         
         $RWB_Y.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
             .style('filter', 'grayscale(100%)')
@@ -157,13 +157,13 @@ function renderStep(index) {
     }
     if (index === 5) {
         $RWB_N.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
         
         $RWB_Y.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 0.2)
             .style('filter', 'grayscale(100%)')
@@ -174,7 +174,7 @@ function renderStep(index) {
 
     if (index === 6) {
         $campaignLogos.transition()
-            .duration(200)
+            .duration(500)
             .ease(d3.easeLinear)
             .style('opacity', 1)
             .style('filter', 'none')
@@ -350,7 +350,7 @@ function init(data) {
     scrollSetup();
 
     //loadGrid();
-    fadeInGrid();
+    //fadeInGrid();
     //invisibleStroke(); 
     animateTitle(); 
 

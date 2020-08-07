@@ -1,7 +1,7 @@
 .methods
     font-family $national
     color $off-black
-    margin-top 3rem
+    margin-top 5rem
 
     h3
         max-width $column-width
@@ -17,13 +17,31 @@
         font-family $national  
         text-transform none 
 
-    ul
+    .example-wrapper
         max-width $column-width
         margin 0 auto
-        font-family $national
+        display flex
+        flex direction row
         padding 0 1rem
-        list-style-type circle
-        list-style-position inside
+        flex-wrap wrap
+        justify-content space-between
 
-        li
-          set-type-size('small', true) 
+        .example
+            width 48%
+            display flex
+            flex-direction column
+            margin-bottom 3rem
+
+            img
+                width 100%
+
+            .credit, .explainer
+                margin 0
+                set-type-size('small', true) 
+
+            .credit
+                color $gray-dark 
+
+            .explainer
+                margin 1rem 0 0 0 
+                font-weight 700         

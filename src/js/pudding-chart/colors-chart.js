@@ -57,12 +57,12 @@ d3.selection.prototype.puddingColorChart = function init(options) {
 
       function returnRace(race) {
         if (race == 'Y') { return 'White'}
-        else { return 'Non-White'}
+        else { return 'Cand. of color'}
       }
 
       function returnGender(gender) {
         if (gender == 'Y') { return 'Male'}
-        else { return 'Non-male'}
+        else { return 'Female'}
       }
 
       function chartMouseover(d, i) {

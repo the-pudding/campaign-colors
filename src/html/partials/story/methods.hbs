@@ -4,11 +4,15 @@
     <p class='prose'>{{{value}}}</p>
     {{/each}}
 
-    <ul>
+    <div class='example-wrapper'>
         {{#each copy.methodsList}}
-        <li>{{{value}}}</li>
+        <div class='example'>
+            <img src='assets/images/{{image}}'>
+            <p class='credit'>{{credit}}</p>
+            <p class='explainer'>{{text}}</p>
+        </div>
         {{/each}}
-    </ul>    
+    </div>    
 
     {{#each copy.methods2}}
     <p class='prose'>{{{value}}}</p>

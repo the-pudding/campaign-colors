@@ -17,7 +17,7 @@ body
 
 		.logoDiv
 			display flex
-			opacity 0
+			opacity 0.125
 			box-sizing border-box
 			outline none
 			filter grayscale(100%)
@@ -141,6 +141,7 @@ body
 					white-space nowrap
 					//color $off-white
 					background-color $white
+					cursor pointer
 
 					&:hover
 						//background-color rgba($gray-light, 0.5)
@@ -148,6 +149,10 @@ body
 
 			#step-0
 				visibility hidden
+
+.emphasis
+	font-style italic
+
 
 @keyframes updown {
 	0% { transform: translateY(0) }
