@@ -59,7 +59,7 @@ function filterData(data, demographic) {
         demographicDataNest = d3.nest()
             .key(d => d.RWB).sortKeys(d3.ascending)
             .entries(demographicData)
-        demoHed = 'female candidates'    
+        demoHed = 'women candidates'    
     }
 
     if (demographic == 'minWomen') {
@@ -87,7 +87,7 @@ function init(data, demographic) {
     let $demoContainer = d3.select(`#${demographic}`)
     let $demoSen = d3.select(`#${demographic}-sen`)
 
-    $demoSen.html(`<span>${percentCands}% of ${demoHed}</span> used non-RWB colors compared to only ${percentWhiteMaleCands}% of White male candidates.`)
+    $demoSen.html(`<span>${percentCands}% of ${demoHed}</span> used non-RWB colors compared to only ${percentWhiteMaleCands}% of White men candidates.`)
 
     let $colorContainer = $demoContainer.selectAll('.colorGroup')
         .data(demographicDataNest)
